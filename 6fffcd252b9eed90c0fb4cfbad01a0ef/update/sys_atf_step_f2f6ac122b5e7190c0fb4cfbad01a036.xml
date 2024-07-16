@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Impersonate the user: {{Step 1: Create a User.User}}</description>
+        <display_name>Impersonate</display_name>
+        <inputs/>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>6</order>
+        <step_config display_value="Impersonate">071ee5b253331200040729cac2dc348d</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:26</sys_created_on>
+        <sys_id>f2f6ac122b5e7190c0fb4cfbad01a036</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>Impersonate</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_f2f6ac122b5e7190c0fb4cfbad01a036</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-11-17 15:15:59</sys_updated_on>
+        <table/>
+        <test display_value=" Notification SM.now-Setup Notifications(SMNOW-660)-1">5ef6e8122b5e7190c0fb4cfbad01a08e</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=f2f6ac122b5e7190c0fb4cfbad01a036"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>f2f6ac122b5e7190c0fb4cfbad01a036</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:26</sys_created_on>
+        <sys_id>3af6ac122b5e7190c0fb4cfbad01a037</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_nsharma2</sys_updated_by>
+        <sys_updated_on>2023-11-06 07:14:26</sys_updated_on>
+        <value/>
+        <variable display_value="User">586e2c4253e0220002c6435723dc3415</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=f2f6ac122b5e7190c0fb4cfbad01a036"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>user</field>
+        <id>f2f6ac122b5e7190c0fb4cfbad01a036</id>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:26</sys_created_on>
+        <sys_id>bef6ac122b5e7190c0fb4cfbad01a037</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin_nsharma2</sys_updated_by>
+        <sys_updated_on>2023-11-06 07:14:26</sys_updated_on>
+        <table>var__m_atf_input_variable_071ee5b253331200040729cac2dc348d</table>
+        <value>{{step['52f6e8122b5e7190c0fb4cfbad01a094'].user}}</value>
+    </sys_element_mapping>
+</record_update>

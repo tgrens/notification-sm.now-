@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Submit the current form and confirm form submitted to server</description>
+        <display_name>Submit a Form</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>10</order>
+        <step_config display_value="Submit a Form">be8e0a935332120028bc29cac2dc34e4</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:27</sys_created_on>
+        <sys_id>8bf6ac122b5e7190c0fb4cfbad01a058</sys_id>
+        <sys_mod_count>8</sys_mod_count>
+        <sys_name>Submit a Form</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_8bf6ac122b5e7190c0fb4cfbad01a058</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-11-17 15:16:03</sys_updated_on>
+        <table/>
+        <test display_value=" Notification SM.now-Setup Notifications(SMNOW-660)-1">5ef6e8122b5e7190c0fb4cfbad01a08e</test>
+        <timeout>1970-01-01 00:00:05</timeout>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=8bf6ac122b5e7190c0fb4cfbad01a058"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>8bf6ac122b5e7190c0fb4cfbad01a058</document_key>
+        <order>50</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:27</sys_created_on>
+        <sys_id>0bf6ac122b5e7190c0fb4cfbad01a059</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_nsharma2</sys_updated_by>
+        <sys_updated_on>2023-11-06 07:14:27</sys_updated_on>
+        <value>standard_ui</value>
+        <variable display_value="Form UI">ae8b91c9ffa333008d3f5d9ad53bf1ba</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>8bf6ac122b5e7190c0fb4cfbad01a058</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:27</sys_created_on>
+        <sys_id>47f6ac122b5e7190c0fb4cfbad01a059</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_nsharma2</sys_updated_by>
+        <sys_updated_on>2023-11-06 07:14:27</sys_updated_on>
+        <value>form_submitted_to_server</value>
+        <variable display_value="Assert type">c796d40497302200abe4bb7503ac4ad8</variable>
+    </sys_variable_value>
+</record_update>

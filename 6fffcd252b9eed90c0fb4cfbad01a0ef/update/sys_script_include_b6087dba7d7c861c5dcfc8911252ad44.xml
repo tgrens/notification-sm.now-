@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.ITILUserLink</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the notification(URL of a ticket) to be sent for ticket.</description>
+        <name>ITILUserLink</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-undef */
+/**
+ * @class ITILUserLink
+ * @description Determines the notification to be sent for incident ticket.
+ * @since 11/03/2024
+ * @date  11/03/2024
+ * @version 1.0.0
+ * @author Siddhant Salunkhe E-Mail: <siddhant.salunkhe@t-systems.com>
+ *
+ */
+
+class ITILUserLink extends LinkGenerator {
+
+    /**
+   * @description This function returns exact URL of ticket
+   *
+   * @param {Object} notifParams see email.engine.js
+   * @param {Object} currObj - Current GlideRecord Object
+   * @returns{String} exact URL of ticket (SOW Link)
+   *
+   */
+    createTicketURL(notifParams, currObj) {
+        let link = '';
+        if(this._isITILUser(notifParams)) {
+            gs.debug(`[ITILUserLink] currObj ==> ${(currObj)}`);
+            const tableName = UtilityFunctions.determineTable(currObj);
+            link = `/now/sow/record/${ tableName }/${ currObj.sys_id.toString()}`;
+        }
+        return link;
+
+    }
+    // eslint-disable-next-line require-jsdoc
+    _isITILUser(notifParams) {
+        let itilUser = false;
+        // let isITILuser = x_dtitg_core_smnow.UserManagementUtils.hasRole(notifParams.recipients, "itil");
+        const LIMIT = 1;
+        const query = QueryBuilder.findRole(notifParams.recipients, Constants.ITIL);
+        gs.debug(`[ITILUserLink] query ==> ${ JSON.stringify(query)}`);
+        let isITILuser = x_dtitg_core_smnow.GlideRecordUtils.getLimitedGlideRecord('sys_user_has_role', query, LIMIT);
+        if (isITILuser.next()) {
+            gs.debug(`[ITILUserLink] isITILuser ==> ${ JSON.stringify(isITILuser)}`);
+            itilUser = true;
+        }
+        return itilUser;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-03-11 09:08:25</sys_created_on>
+        <sys_id>b6087dba7d7c861c5dcfc8911252ad44</sys_id>
+        <sys_mod_count>41</sys_mod_count>
+        <sys_name>ITILUserLink</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_b6087dba7d7c861c5dcfc8911252ad44</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 10:59:01</sys_updated_on>
+    </sys_script_include>
+</record_update>

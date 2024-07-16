@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.EmailLanguage</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the language of the email</description>
+        <name>EmailLanguage</name>
+        <script><![CDATA[/* eslint-disable no-underscore-dangle */
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class EmailLanguage
+ * @description Determines the language of the email
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class EmailLanguage {
+
+    /**
+     * Calculates the language id for an email from the recipient
+     *
+     * @param {Object} sysEventEmailAction sysevent_email_action record
+     * @param {Object} notifParams sysevent_email_action record
+     * @param {Array} recipients recipient list
+     *
+     * @returns {String} language id
+     */
+    determineLanguageId(sysEventEmailAction, notifParams) {
+        const recipientsLength = 1;
+        const keyFirst = 0;
+
+        let recipients = notifParams.recipients;
+
+        gs.debug(`[EmailLanguage][determineLanguageId] sysEventEmailAction name =>${ sysEventEmailAction.name }`);
+        gs.debug(`[EmailLanguage][determineLanguageId] recipients =>${ recipients }`);
+
+        let recipientLanguageId = null;
+        if (recipients.length === recipientsLength) {
+            let recipient = recipients[keyFirst];
+            if (UtilityFunctions.isNotBlank(recipient)) {
+                recipientLanguageId = this._calculateRecipientLanguageId(recipient);
+            }
+        }
+
+        let notifcationLanguageId = UtilityFunctions.getNotifcationLanguageId(sysEventEmailAction);
+        gs.debug(`[EmailLanguage][determineLanguageId] recipientLanguageId =>${ recipientLanguageId }`);
+        gs.debug(`[EmailLanguage][determineLanguageId] notifcationLanguageId =>${ notifcationLanguageId }`);
+
+        const language = recipientLanguageId || notifcationLanguageId || Constants.DEFAULT_LANGUAGE_ID;
+
+        gs.debug(`[EmailLanguage][determineLanguageId] language =>${ language }`);
+
+        return language;
+    }
+
+    /**
+     * Calculates the recipient language id
+     *
+     * @param {String} recipient sys_id of the recipient
+     *
+     * @returns {String} language id
+     */
+    _calculateRecipientLanguageId(recipient) {
+
+        let preferredRecipientLanguageId = UtilityFunctions.getPreferredRecipientLanguageId(recipient);
+        let recipientLanguageId = UtilityFunctions.getRecipientLanguageId(recipient);
+
+        gs.debug(`[EmailLanguage][_calculateRecipientLanguageId] preferredRecipientLanguageId =>${ preferredRecipientLanguageId }`);
+        gs.debug(`[EmailLanguage][_calculateRecipientLanguageId] recipientLanguageId =>${ recipientLanguageId }`);
+        return preferredRecipientLanguageId || recipientLanguageId;
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-09 06:52:06</sys_created_on>
+        <sys_id>c922880e2bdfe150c0fb4cfbad01a099</sys_id>
+        <sys_mod_count>37</sys_mod_count>
+        <sys_name>EmailLanguage</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_c922880e2bdfe150c0fb4cfbad01a099</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-03 09:14:40</sys_updated_on>
+    </sys_script_include>
+</record_update>

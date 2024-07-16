@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.ContentServiceFactory</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Creational pattern script for the ContentServices</description>
+        <name>ContentServiceFactory</name>
+        <script><![CDATA[/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class ContentServiceFactory
+ * @description Creational pattern script for the ContentServices
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class ContentServiceFactory {
+
+    /**
+     * Factory function
+     *
+     * @param {String} service content service that should be executed
+     * @param {Object} current GlideRecord object for the ticket record
+     * @param {Object} template Handles printing from the mail script to the email message.
+     * @param {Object} email EmailOutbound object
+     * @param {Object} sysEventEmailAction GlideRecord object for the email notification (sysevent_email_action).
+     * @param {Object} event GlideRecord object for the event that fired the notification (sysevent).
+     *
+     * @returns {Object} contentService
+     */
+    static getContentService(service, current, template, email, sysEventEmailAction, event) {
+        let serviceObj = null;
+
+        gs.debug(`[Notification][ContentServiceFactory] [getContentService] service ==> ${ service}`);
+
+        if (ContentServices.hasOwnProperty(service)) {
+            serviceObj = ContentServices[service](current, template, email, sysEventEmailAction, event);
+        }
+
+        return serviceObj;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-26 08:30:10</sys_created_on>
+        <sys_id>c8d379772b162510c0fb4cfbad01a031</sys_id>
+        <sys_mod_count>70</sys_mod_count>
+        <sys_name>ContentServiceFactory</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_c8d379772b162510c0fb4cfbad01a031</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2023-09-22 07:48:19</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.TicketAssignmentGroup</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the assignment group for an event ticket</description>
+        <name>TicketAssignmentGroup</name>
+        <script><![CDATA[/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/**
+ * @class TicketAssignmentGroup
+ * @description Determines the assignment group for an event ticket
+ * @since 29/04/2024
+ * @date  29/04/2024
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class TicketAssignmentGroup extends AssignmentGroupDeterminer {
+
+
+    /**
+     * Determines the assignment group for a ticket
+     *
+     * @param {Object} current  ticket record
+     * @param {Object} sysEventEmailAction sysevent_email_action record
+     * @param {Object} event event that triggers the notification
+     *
+     * @returns {String} assignment group sys_id of the assignment group
+     */
+    determineAssignmentGroup(current, sysEventEmailAction, event) {
+        let assignmentGroup = '';
+        if (current.assignment_group) {
+
+            gs.debug(`[TicketAssignmentGroup][determineAssignmentGroup] assignmentGroup => ${ current.assignment_group}`);
+
+            assignmentGroup = current.assignment_group.parent ?
+                current.assignment_group.parent.toString() : current.assignment_group.toString();
+        }
+
+        gs.debug(`[TicketAssignmentGroup][determineAssignmentGroup] parent group => ${ assignmentGroup}`);
+
+        return assignmentGroup;
+    }
+
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-04-24 13:01:40</sys_created_on>
+        <sys_id>2294dd09f8f1c2145dcfbd805aab8a19</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>TicketAssignmentGroup</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_2294dd09f8f1c2145dcfbd805aab8a19</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-06 13:45:49</sys_updated_on>
+    </sys_script_include>
+</record_update>

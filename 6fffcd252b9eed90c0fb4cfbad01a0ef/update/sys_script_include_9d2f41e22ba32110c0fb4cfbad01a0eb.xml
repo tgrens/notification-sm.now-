@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.FieldTranslator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Base class for the FieldTranslator.</description>
+        <name>FieldTranslator</name>
+        <script><![CDATA[/* eslint-disable no-underscore-dangle */
+/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/**
+ * @class FieldTranslator
+ * @description Base class for the FieldTranslator.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class FieldTranslator {
+
+    /**
+     * Client passes a chain object. This improves flexibility and
+     * makes testing  easier.
+     *
+     * @param {Object} _nextProcessor chain object
+     */
+    setNext(_nextProcessor) {
+        this.nextProcessor = _nextProcessor;
+    }
+
+    /**
+     * Runs check on the next object in chain or ends traversing if we're in
+     * last object in chain.
+     *
+     * @param {Object} record current GlideRecord object
+     * @param {String} field String with field values definitions
+     * @param {String} languageId email language id
+     *
+     * @returns {String} translated field value
+     */
+    process(record, field, languageId) {
+        let value = this.translateFieldValue(record, field, languageId);
+
+        if (UtilityFunctions.isBlank(value)) {
+            if (this.nextProcessor) {
+                value = this.nextProcessor.process(record, field, languageId);
+            }
+        }
+
+        return value;
+    }
+
+    /**
+     * Translates the GlideElement objects contained in the string.
+     *
+     * @param {Object} record current GlideRecord object
+     * @param {String} field String with field values definitions
+     * @param {String} languageId email language id
+     *
+     */
+    translateFieldValue(record, field, languageId) {
+        throw new Error('Abstract method!');
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-23 11:55:50</sys_created_on>
+        <sys_id>9d2f41e22ba32110c0fb4cfbad01a0eb</sys_id>
+        <sys_mod_count>41</sys_mod_count>
+        <sys_name>FieldTranslator</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_9d2f41e22ba32110c0fb4cfbad01a0eb</sys_update_name>
+        <sys_updated_by>admin_tonguyen</sys_updated_by>
+        <sys_updated_on>2023-09-16 04:46:04</sys_updated_on>
+    </sys_script_include>
+</record_update>

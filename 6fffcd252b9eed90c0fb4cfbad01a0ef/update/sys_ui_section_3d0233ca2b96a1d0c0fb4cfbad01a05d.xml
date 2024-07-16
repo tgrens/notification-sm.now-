@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_section caption="" section_id="3d0233ca2b96a1d0c0fb4cfbad01a05d" sys_domain="global" table="x_dtitg_notificati_enabled" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>active</element>
+            <position>0</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2024-04-25 08:06:07</sys_created_on>
+            <sys_id>47aad1918c75ced05dcf10bd1c643beb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_enabled" sys_domain="global" view="Default view">3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2024-04-25 08:06:07</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>1</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2024-04-25 08:06:07</sys_created_on>
+            <sys_id>8faad1918c75ced05dcf10bd1c643beb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_enabled" sys_domain="global" view="Default view">3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2024-04-25 08:06:07</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.end_split</element>
+            <position>2</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2024-04-25 08:06:07</sys_created_on>
+            <sys_id>83aad1918c75ced05dcf10bd1c643bec</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_enabled" sys_domain="global" view="Default view">3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2024-04-25 08:06:07</sys_updated_on>
+            <sys_user/>
+            <type>.end_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.begin_split</element>
+            <position>3</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2024-04-25 08:06:07</sys_created_on>
+            <sys_id>87aad1918c75ced05dcf10bd1c643bec</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_enabled" sys_domain="global" view="Default view">3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2024-04-25 08:06:07</sys_updated_on>
+            <sys_user/>
+            <type>.begin_split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>number</element>
+            <position>4</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2024-04-25 08:06:07</sys_created_on>
+            <sys_id>8baad1918c75ced05dcf10bd1c643bec</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_enabled" sys_domain="global" view="Default view">3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2024-04-25 08:06:07</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>company</element>
+            <position>5</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2024-04-25 08:06:07</sys_created_on>
+            <sys_id>8faad1918c75ced05dcf10bd1c643bec</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_enabled" sys_domain="global" view="Default view">3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2024-04-25 08:06:07</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>business_service</element>
+            <position>6</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2024-04-25 08:06:07</sys_created_on>
+            <sys_id>83aad1918c75ced05dcf10bd1c643bed</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_enabled" sys_domain="global" view="Default view">3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2024-04-25 08:06:07</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>assignment_group</element>
+            <position>7</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2024-04-25 08:06:07</sys_created_on>
+            <sys_id>87aad1918c75ced05dcf10bd1c643bed</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_enabled" sys_domain="global" view="Default view">3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2024-04-25 08:06:07</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>.split</element>
+            <position>8</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2024-04-25 08:06:07</sys_created_on>
+            <sys_id>8baad1918c75ced05dcf10bd1c643bed</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_enabled" sys_domain="global" view="Default view">3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2024-04-25 08:06:07</sys_updated_on>
+            <sys_user/>
+            <type>.split</type>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>notification</element>
+            <position>9</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2024-04-25 08:06:07</sys_created_on>
+            <sys_id>8faad1918c75ced05dcf10bd1c643bed</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_enabled" sys_domain="global" view="Default view">3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2024-04-25 08:06:07</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_dtitg_notificati_enabled</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2023-04-21 07:11:56</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_dtitg_notificati_enabled</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+            <sys_update_name>sys_ui_section_3d0233ca2b96a1d0c0fb4cfbad01a05d</sys_update_name>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2023-04-21 07:11:56</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

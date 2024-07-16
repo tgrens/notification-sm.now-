@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.TicketBusinessService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the business service for an incident ticket</description>
+        <name>TicketBusinessService</name>
+        <script><![CDATA[/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class TicketBusinessService
+ * @description Determines the business service for an incident ticket
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class TicketBusinessService extends BusinessServiceDeterminer {
+
+    /**
+     * Determines the business service for an incident ticket
+     *
+     * @param {Object} current incident ticket record
+     * @param {Object} sysEventEmailAction sysevent_email_action record
+     * @param {Object} event event that triggers the notification
+     *
+     * @returns {String} service sys_id of the business service
+     */
+    determineBusinessService(current, sysEventEmailAction, event) {
+        let service = '';
+
+        if (current.business_service) {
+            service = current.getValue('business_service');
+        }
+
+        gs.debug(`[TicketBusinessService][service] service => ${ service}`);
+
+        return service;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-21 05:48:32</sys_created_on>
+        <sys_id>4b77e9bd2b2fa190c0fb4cfbad01a013</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>TicketBusinessService</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_4b77e9bd2b2fa190c0fb4cfbad01a013</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-25 15:09:36</sys_updated_on>
+    </sys_script_include>
+</record_update>

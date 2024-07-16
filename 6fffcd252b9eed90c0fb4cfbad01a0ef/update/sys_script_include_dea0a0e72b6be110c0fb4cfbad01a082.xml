@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.ReferenceFieldTranslator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Translates the field values of field type reference.</description>
+        <name>ReferenceFieldTranslator</name>
+        <script><![CDATA[/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/**
+ * @class ReferenceFieldTranslator
+ * @description Translates the field values of field type reference.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class ReferenceFieldTranslator extends FieldTranslator {
+
+    /**
+     * Translates the field values of field type reference.
+     *
+     * @param {Object} record GliedRecord object
+     * @param {String} field Column name for which to return the GlideElement object.
+     * @param {String} languageId email language id
+     *
+     * @returns {String} value
+     *
+     */
+    translateFieldValue(record, field, languageId) {
+        const types = Constants.INTERNAL_TYPES;
+        const limit = 1;
+        let value = '';
+        let internalType = GlideRecordUtils.getInternalType(record, field);
+
+        gs.debug(`[Notifications SM.Now][ReferenceFieldTranslator][translateFieldValue] field ==> ${field}`);
+        gs.debug(`[Notifications SM.Now][ReferenceFieldTranslator][translateFieldValue] internalType ==> ${internalType}`);
+
+        if (internalType === types.REFERENCE) {
+            value = GlideRecordUtils.getElementDisplayValue(record, field);
+        }
+
+        gs.debug(`[Notifications SM.Now][ReferenceFieldTranslator][translateFieldValue] value ==> ${value}`);
+
+        return value;
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-26 11:07:32</sys_created_on>
+        <sys_id>dea0a0e72b6be110c0fb4cfbad01a082</sys_id>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_name>ReferenceFieldTranslator</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_dea0a0e72b6be110c0fb4cfbad01a082</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-03 11:12:28</sys_updated_on>
+    </sys_script_include>
+</record_update>

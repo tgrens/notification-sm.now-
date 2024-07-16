@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_ui_form_sections form_id="212717c12ba32190c0fb4cfbad01a07a" sys_domain="global" table="x_dtitg_notificati_configuration" version="3">
+        <sys_ui_form_section action="INSERT_OR_UPDATE">
+            <position>0</position>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2023-06-19 05:59:03</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>e52717c12ba32190c0fb4cfbad01a07d</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_overrides/>
+            <sys_ui_form display_value="x_dtitg_notificati_configuration" name="x_dtitg_notificati_configuration" sys_domain="global" view="Default view">212717c12ba32190c0fb4cfbad01a07a</sys_ui_form>
+            <sys_ui_section caption="NULL" display_value="" name="x_dtitg_notificati_configuration" sys_domain="global" view="Default view">edc22de92bdeed90c0fb4cfbad01a019</sys_ui_section>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2023-06-19 05:59:03</sys_updated_on>
+        </sys_ui_form_section>
+        <sys_ui_form action="INSERT_OR_UPDATE">
+            <name>x_dtitg_notificati_configuration</name>
+            <roles/>
+            <sys_class_name>sys_ui_form</sys_class_name>
+            <sys_created_by>admin_thomas</sys_created_by>
+            <sys_created_on>2023-06-19 05:59:03</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>212717c12ba32190c0fb4cfbad01a07a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_dtitg_notificati_configuration</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+            <sys_update_name>sys_ui_form_sections_212717c12ba32190c0fb4cfbad01a07a</sys_update_name>
+            <sys_updated_by>admin_thomas</sys_updated_by>
+            <sys_updated_on>2023-06-19 05:59:03</sys_updated_on>
+            <sys_user/>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_form>
+    </sys_ui_form_sections>
+</record_update>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>7</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-17 07:30:19</sys_created_on>
+        <sys_id>0fe4c8368ca142d05dcf10bd1c643b32</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_0fe4c8368ca142d05dcf10bd1c643b32</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 07:29:29</sys_updated_on>
+        <table/>
+        <test display_value="Notification SM.now - ITILUserLink - createTicketURL()">aee345988cd9ce105dcf10bd1c643be5</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=0fe4c8368ca142d05dcf10bd1c643b32"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>0fe4c8368ca142d05dcf10bd1c643b32</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-17 07:30:19</sys_created_on>
+        <sys_id>60c540b68ca142d05dcf10bd1c643bed</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_ssalunkhe</sys_updated_by>
+        <sys_updated_on>2024-04-17 07:30:19</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>0fe4c8368ca142d05dcf10bd1c643b32</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-17 07:30:19</sys_created_on>
+        <sys_id>68c540b68ca142d05dcf10bd1c643bed</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin_ssalunkhe</sys_updated_by>
+        <sys_updated_on>2024-04-17 07:31:58</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {&#13;
+    // add test script here&#13;
+	let incident = new GlideRecord('incident');&#13;
+	incident.get(steps('19c83abd8c15c6505dcf10bd1c643be1').record_id);&#13;
+	let businessService = new GlideRecord('cmdb_ci_service');&#13;
+	businessService.get(steps('7608f2bd8c15c6505dcf10bd1c643b78').record_id);&#13;
+	let user = new GlideRecord('sys_user');&#13;
+	user.get('user_name','itiluser');&#13;
+	let id = user.sys_id.toString();&#13;
+	const notifParams = {"businessService":businessService.sys_id.toString(),"company":"","recipients":[id],"languageId":"sk","paramObj":{}}&#13;
+	let result = new x_dtitg_notificati.ITILUserLink().createTicketURL(notifParams,incident);&#13;
+	let expected = '/now/sow/record/incident/' + incident.sys_id;&#13;
+   	assertEqual({&#13;
+		name: 'ITILUserLink#createTicketURL()',&#13;
+		value: result,&#13;
+		shouldbe: expected&#13;
+	})&#13;
+&#13;
+})(outputs, steps, params, stepResult, assertEqual);&#13;
+&#13;
+</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+</record_update>

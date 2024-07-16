@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.TranslationObject</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Constructor, Returns the translated label,</description>
+        <name>TranslationObject</name>
+        <script><![CDATA[/* eslint-disable no-unused-vars */
+/**
+ * @class TranslationObject
+ * @description Constructor, Returns the translated label,
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class TranslationObject {
+
+    /**
+     * Constructor
+     *
+     * @param {String} _key label key
+     * @param {Boolean} _translated defined if the object contains a translation
+     */
+    constructor(_key, _translated) {
+        this.active = false;
+        this.key = _key;
+        this.languageId = '';
+        this.notification = '';
+        this.translation = _key;
+        this.assignmentGroup = '';
+        this.display = true;
+        this.stripHTML = false;
+        this.translated = _translated;
+    }
+
+
+    /**
+     * Returns the translated label
+     *
+     * @returns {String} translated label
+     */
+    getTranslation() {
+        return this.translation;
+    }
+
+    /**
+     * Returns true if the translation should be displayed
+     *
+     * @returns {Boolean} true/false
+     */
+    toDisplay() {
+        return this.display;
+    }
+
+    /**
+     * Returns true if the label is translated.
+     *
+     * @returns {Boolean} true/false
+     */
+    isTranslated() {
+        return this.translated;
+    }
+
+    /**
+     * Returns true if the html tags should be removed from the string.
+     *
+     * @returns {Boolean} true/false
+     */
+    toStrip() {
+        return this.stripHTML;
+    }
+
+    /**
+     * Returns an JSON string representation of the object
+     * @returns {String} JSON string
+     */
+    toString() {
+        return JSON.stringify(this);
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-21 12:48:58</sys_created_on>
+        <sys_id>a2184b792ba7e190c0fb4cfbad01a0a5</sys_id>
+        <sys_mod_count>22</sys_mod_count>
+        <sys_name>TranslationObject</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_a2184b792ba7e190c0fb4cfbad01a0a5</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-29 08:53:37</sys_updated_on>
+    </sys_script_include>
+</record_update>

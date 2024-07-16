@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Insert a record into 'incident' with the following values:
+Caller = {{Step 2: Create a User.User}}
+and Affected User = {{Step 2: Create a User.User}}
+and Business Service = {{Step 3: Record Insert.Record}}
+and Service Offering = {{Step 4: Record Insert.Record}}
+and Short Description = Testiing
+Confirm the record was successfully inserted</description>
+        <display_name>Record Insert</display_name>
+        <inputs/>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>5</order>
+        <step_config display_value="Record Insert">14872288df60220062fe6c7a4df26319</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-17 09:18:37</sys_created_on>
+        <sys_id>494ed8728c2542d05dcf10bd1c643b66</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Record Insert</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_494ed8728c2542d05dcf10bd1c643b66</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 09:01:26</sys_updated_on>
+        <table>incident</table>
+        <test display_value="Notification SM.now - LinkGeneratorProcessor - generateTicketURL()">84ac9cfe8ce142d05dcf10bd1c643b04</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=494ed8728c2542d05dcf10bd1c643b66"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>494ed8728c2542d05dcf10bd1c643b66</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-17 09:18:37</sys_created_on>
+        <sys_id>0f8e5c728c2542d05dcf10bd1c643b45</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_ssalunkhe</sys_updated_by>
+        <sys_updated_on>2024-04-17 09:18:37</sys_updated_on>
+        <value>incident</value>
+        <variable display_value="Table">90144b535320220002c6435723dc3488</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>494ed8728c2542d05dcf10bd1c643b66</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-17 09:18:37</sys_created_on>
+        <sys_id>478e5c728c2542d05dcf10bd1c643b45</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_ssalunkhe</sys_updated_by>
+        <sys_updated_on>2024-04-17 09:18:37</sys_updated_on>
+        <value>record_successfully_inserted</value>
+        <variable display_value="Assert type">9024a37f671003007ba405225685efe5</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>494ed8728c2542d05dcf10bd1c643b66</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-17 09:18:37</sys_created_on>
+        <sys_id>4b8e5c728c2542d05dcf10bd1c643b45</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_ssalunkhe</sys_updated_by>
+        <sys_updated_on>2024-04-17 09:18:37</sys_updated_on>
+        <value>1</value>
+        <variable display_value="Enforce security">e6e3c7535320220002c6435723dc3496</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>494ed8728c2542d05dcf10bd1c643b66</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-17 09:18:37</sys_created_on>
+        <sys_id>cf8e5c728c2542d05dcf10bd1c643b45</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_ssalunkhe</sys_updated_by>
+        <sys_updated_on>2024-04-17 09:18:37</sys_updated_on>
+        <value>caller_id={{step['b03d94328c2542d05dcf10bd1c643b95'].user}}^x_dtitg_itsm_smnow_affected_user={{step['b03d94328c2542d05dcf10bd1c643b95'].user}}^business_service={{step['eaeddc328c2542d05dcf10bd1c643bc6'].record_id}}^service_offering={{step['c42e98728c2542d05dcf10bd1c643b85'].record_id}}^short_description=Testiing^EQ</value>
+        <variable display_value="Field values">dd54cf535320220002c6435723dc34fd</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=494ed8728c2542d05dcf10bd1c643b66"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>enforce_security</field>
+        <id>494ed8728c2542d05dcf10bd1c643b66</id>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-17 09:18:37</sys_created_on>
+        <sys_id>038e5c728c2542d05dcf10bd1c643b45</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_ssalunkhe</sys_updated_by>
+        <sys_updated_on>2024-04-17 09:18:37</sys_updated_on>
+        <table>var__m_atf_input_variable_14872288df60220062fe6c7a4df26319</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>field_values</field>
+        <id>494ed8728c2542d05dcf10bd1c643b66</id>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-17 09:18:37</sys_created_on>
+        <sys_id>c38e5c728c2542d05dcf10bd1c643b45</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_ssalunkhe</sys_updated_by>
+        <sys_updated_on>2024-04-17 09:18:37</sys_updated_on>
+        <table>var__m_atf_input_variable_14872288df60220062fe6c7a4df26319</table>
+        <value>caller_id={{step['b03d94328c2542d05dcf10bd1c643b95'].user}}^x_dtitg_itsm_smnow_affected_user={{step['b03d94328c2542d05dcf10bd1c643b95'].user}}^business_service={{step['eaeddc328c2542d05dcf10bd1c643bc6'].record_id}}^service_offering={{step['c42e98728c2542d05dcf10bd1c643b85'].record_id}}^short_description=Testiing^EQ</value>
+    </sys_element_mapping>
+</record_update>

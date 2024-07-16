@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test_suite_test">
+    <sys_atf_test_suite_test action="INSERT_OR_UPDATE">
+        <abort_on_failure>false</abort_on_failure>
+        <order>100</order>
+        <sys_class_name>sys_atf_test_suite_test</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-03 12:43:13</sys_created_on>
+        <sys_id>aa8974b12b7f6d10c0fb4cfbad01a0cc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>41d9f0f12b7f6d10c0fb4cfbad01a0cc</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_test_suite_test_aa8974b12b7f6d10c0fb4cfbad01a0cc</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-03 12:43:13</sys_updated_on>
+        <test display_value="Notification SM.now - CompanyNotFoundException - constructor()">41d9f0f12b7f6d10c0fb4cfbad01a0cc</test>
+        <test_suite display_value="Notification SM.now - CompanyNotFoundException">6499fcb12b7f6d10c0fb4cfbad01a0d0</test_suite>
+    </sys_atf_test_suite_test>
+</record_update>

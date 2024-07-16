@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.EventTicketBusinessService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the business service for an event ticket </description>
+        <name>EventTicketBusinessService</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class EventTicketBusinessService
+ * @description Determines the business service for an event ticket
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class EventTicketBusinessService extends BusinessServiceDeterminer {
+
+    /**
+    * Determines the business service for an ticket event
+    *
+    * @param {Object} current incident ticket record
+    * @param {Object} sysEventEmailAction sysevent_email_action record
+    * @param {Object} event event that triggers the notification and includes in event.parm2 the company
+    *
+    * Example:
+    *   var parm2 = {
+                      'business_service': 'Business service sys_id',
+                      'name': 'Telekom'
+                    }
+    *
+    * gs.eventQueue('event.trigger', current, 'ABC', JSON.stringify(parm2))
+    *
+    * @returns {String} business service sys_id
+    */
+    determineBusinessService(current, sysEventEmailAction, event) {
+        let service = '';
+
+        // eslint-disable-next-line no-underscore-dangle
+        if (this._isEventObject(event)) {
+            try {
+                let obj = JSON.parse(event.parm2);
+                gs.debug(`[EventTicketBusinessService][determineBusinessService] event => ${ JSON.stringify(event)}`);
+                service = UtilityFunctions.findValue(obj, 'business_service');
+            } catch (ex) {
+                gs.warn(`[EventTicketBusinessService][determineBusinessService] JSON parsing error => ${ ex}`);
+            }
+        }
+
+        gs.debug(`[EventTicketBusinessService][determineBusinessService] service => ${ service}`);
+
+        return service;
+    }
+
+    /**
+     * Checks the object event.
+     *
+     * @param {Object} event event object
+     *
+     * @returns {Boolean} true/false
+     */
+    _isEventObject(event) {
+        return !UtilityFunctions.isObjEmpty(event) && UtilityFunctions.isEventParamTwo(event);
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-21 05:46:04</sys_created_on>
+        <sys_id>8b1725bd2b2fa190c0fb4cfbad01a03f</sys_id>
+        <sys_mod_count>14</sys_mod_count>
+        <sys_name>EventTicketBusinessService</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_8b1725bd2b2fa190c0fb4cfbad01a03f</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-24 13:07:21</sys_updated_on>
+    </sys_script_include>
+</record_update>

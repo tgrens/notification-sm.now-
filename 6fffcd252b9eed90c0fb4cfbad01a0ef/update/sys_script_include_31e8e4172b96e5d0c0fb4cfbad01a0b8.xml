@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.CompanyDeterminerProcessor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the company (Chain of Responsibility) for the given parameters.</description>
+        <name>CompanyDeterminerProcessor</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class CompanyDeterminerProcessor
+ * @description Determines the company (Chain of Responsibility) for the given parameters.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class CompanyDeterminerProcessor {
+
+    /**
+   * Function that finds (Chain of Responsibility) the
+   * company of a given tickte.
+   *
+    * @param {Object} current GlideRecord object for the ticket record
+    * @param {Object} sysEventEmailAction GlideRecord object for the email notification (sysevent_email_action).
+    * @param {Object} event GlideRecord object for the event that fired the notification (sysevent).
+   *
+   * @returns {String} company sys_id
+   */
+    findCompany(current, sysEventEmailAction, event) {
+        let company = '';
+
+        // Chain ordering:
+        // 1. ProblemTicketCompany
+        // 2. ChangeTicketCompany
+        // 3. IncidentTicketCompany
+        // 4. EventTicketCompany
+
+        let problemCompany = new x_dtitg_notificati.ProblemTicketCompany();
+
+        let changeCompany = new x_dtitg_notificati.ChangeTicketCompany();
+        changeCompany.setNext(problemCompany);
+
+        let incidentCompany = new x_dtitg_notificati.IncidentTicketCompany();
+
+        let eventCompany = new x_dtitg_notificati.EventTicketCompany();
+        eventCompany.setNext(incidentCompany);
+        // initialize chain of responsibility. Execute first chain in queue
+        company = eventCompany.process(current, sysEventEmailAction, event);
+
+        gs.debug(`[CompanyDeterminerProcessor][findCompany] company =>${ company}`);
+
+        if (UtilityFunctions.isBlank(company)) {
+            throw new CompanyNotFoundException('[CompanyDeterminerProcessor][findCompany] ... Company is blank! ');
+        }
+
+        return company;
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-24 13:52:52</sys_created_on>
+        <sys_id>31e8e4172b96e5d0c0fb4cfbad01a0b8</sys_id>
+        <sys_mod_count>34</sys_mod_count>
+        <sys_name>CompanyDeterminerProcessor</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_31e8e4172b96e5d0c0fb4cfbad01a0b8</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 10:08:51</sys_updated_on>
+    </sys_script_include>
+</record_update>

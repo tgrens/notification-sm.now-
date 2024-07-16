@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.MessageFormat</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Replaces variables within a specified message.</description>
+        <name>MessageFormat</name>
+        <script><![CDATA[/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class MessageFormat
+ * @description Replaces variables within a specified message.
+ * @since 19/06/2024
+ * @date  19/06/2024
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class MessageFormat {
+
+    /**
+     * Replaces variables within a specified message.
+     * 
+     * Example:
+     * var my_message = "Abort adding action '{0}', same subflow can't be added twice in {1} subflow.";
+     * var replacements = ['test1', 'test2'];
+     *
+     * var formater = new MessageFormat();
+     * formater.format(my_message, replacements);
+     * 
+     * result ==> Abort adding action 'test1', same subflow can't be added twice in test2 subflow.
+     *   
+     * @param {String} message string with variables e.g."Abort adding action '{0}', same subflow can't be added twice in this subflow.");
+     * @param {Array} replacements Array of strings or values that replace the variables within the specified message.
+     * 
+     * @returns {String} formatted message
+     */
+    format(message, replacements) {
+        let formattedMessage = message;
+        let match = '';
+        const index = 1;
+        const firstMatch = 0;
+        const regex = /{(.*?)\}/gm;
+
+        do {
+
+            match = regex.exec(message);
+            gs.debug(`[MessageFormat][decode] match ==> ${ match}`);
+            if (match) {
+                let field = match[index];
+
+                let value = replacements[field];
+                let toReplace = match[firstMatch];
+
+                gs.debug(`[MessageFormat][decode] field ==> ${ field} : value ==> ${ value} : toReplace  ==> ${ toReplace}`);
+
+                formattedMessage = formattedMessage.replace(toReplace, value);
+
+            }
+        } while (match);
+
+        gs.debug(`[MessageFormat][decode] decodedString ==> ${ formattedMessage}`);
+
+        return formattedMessage;
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-19 08:06:29</sys_created_on>
+        <sys_id>fe89ec0b75be8e105dcfb1c0bc50107e</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_name>MessageFormat</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_fe89ec0b75be8e105dcfb1c0bc50107e</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-19 11:25:16</sys_updated_on>
+    </sys_script_include>
+</record_update>

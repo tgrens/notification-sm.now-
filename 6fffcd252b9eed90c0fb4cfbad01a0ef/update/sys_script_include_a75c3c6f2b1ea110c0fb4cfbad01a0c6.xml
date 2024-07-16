@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.EventTicketCompany</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the company for an event Ticket</description>
+        <name>EventTicketCompany</name>
+        <script><![CDATA[/* eslint-disable no-underscore-dangle */
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class EventTicketCompany
+ * @description Determines the company for an event Ticket
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class EventTicketCompany extends CompanyDeterminer {
+
+    /**
+    * Determines the company for an ticket event
+    *
+    * @param {Object} current incident ticket record
+    * @param {Object} sysEventEmailAction sysevent_email_action record
+    * @param {Object} event event that triggers the notification and includes in event.parm2 the company
+    *
+    * Example:
+    *   var parm2 = {
+                      'company': 'company sys_id',
+                      'name': 'Telekom'
+                    }
+    *
+    * gs.eventQueue('event.trigger', current, 'ABC', JSON.stringify(parm2))
+    *
+    * @returns {String} company sys_id
+    */
+    determineCompany(current, sysEventEmailAction, event) {
+        let company = '';
+
+        if (this._isEventObject(event)) {
+            try {
+                let obj = JSON.parse(event.parm2);
+                gs.debug(`[EventTicketCompany][determineCompany] event => ${ JSON.stringify(event)}`);
+                company = UtilityFunctions.findValue(obj, 'company');
+            } catch (ex) {
+                gs.warn(`[EventTicketCompany][determineCompany] JSON parsing error => ${ ex}`);
+            }
+        }
+
+        gs.debug(`[EventTicketCompany][determineCompany] company => ${ company}`);
+
+        return company;
+    }
+
+    /**
+     * Checks the object event.
+     *
+     * @param {Object} event event object
+     *
+     * @returns {Boolean} true/false
+     */
+    _isEventObject(event) {
+        return !UtilityFunctions.isObjEmpty(event) && UtilityFunctions.isEventParamTwo(event);
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-25 09:50:00</sys_created_on>
+        <sys_id>a75c3c6f2b1ea110c0fb4cfbad01a0c6</sys_id>
+        <sys_mod_count>35</sys_mod_count>
+        <sys_name>EventTicketCompany</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_a75c3c6f2b1ea110c0fb4cfbad01a0c6</sys_update_name>
+        <sys_updated_by>admin_tonguyen</sys_updated_by>
+        <sys_updated_on>2023-09-16 04:42:30</sys_updated_on>
+    </sys_script_include>
+</record_update>

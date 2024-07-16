@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>4</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-10 14:53:27</sys_created_on>
+        <sys_id>564a1dcc2b803950c0fb4cfbad01a06e</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_564a1dcc2b803950c0fb4cfbad01a06e</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-29 11:51:49</sys_updated_on>
+        <table/>
+        <test display_value="Notification SM.now - TranslationObjectBuilder - construct()">4c3a59cc2b803950c0fb4cfbad01a001</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=564a1dcc2b803950c0fb4cfbad01a06e"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>564a1dcc2b803950c0fb4cfbad01a06e</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-10 14:53:27</sys_created_on>
+        <sys_id>d6dad1002bc03950c0fb4cfbad01a0b2</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-29 11:51:49</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {&#13;
+    &#13;
+	let email = new GlideRecord ('sysevent_email_action');&#13;
+	email.addQuery('sys_id', steps('371b1d002bc03950c0fb4cfbad01a08c').record_id);&#13;
+	email.query();&#13;
+	email.next();&#13;
+&#13;
+	let group = new GlideRecord ('sys_user_group');&#13;
+	group.addQuery('sys_id', steps('111c51802bc03950c0fb4cfbad01a0b7').record_id);&#13;
+	group.query();&#13;
+	group.next();&#13;
+&#13;
+	const key = 'intro';&#13;
+	const emailAction = email.getValue('sys_id'); &#13;
+	const assignmentGroup = group.getValue('sys_id'); &#13;
+	const languageId = 'de';&#13;
+&#13;
+	const expectedResult = {&#13;
+		"active":true,&#13;
+		"key":"intro",&#13;
+		"languageId":"de",&#13;
+		"notification":emailAction,&#13;
+		"translation":"&lt;p&gt; Test &lt;/p&gt;",&#13;
+		"assignmentGroup":assignmentGroup,&#13;
+		"display":true,&#13;
+		"stripHTML":false,&#13;
+		"translated":true&#13;
+		};&#13;
+	&#13;
+	const helper = new TranslationObjectBuilder();&#13;
+	const result = helper.construct(key, emailAction, assignmentGroup, languageId);&#13;
+&#13;
+	assertEqual({&#13;
+		name: 'TranslationObjectBuilder#TranslationObjectBuilder()',&#13;
+		value: JSON.stringify(result),&#13;
+		shouldbe: JSON.stringify(expectedResult)&#13;
+	});&#13;
+&#13;
+})(outputs, steps, params, stepResult, assertEqual);</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>564a1dcc2b803950c0fb4cfbad01a06e</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-10 14:53:27</sys_created_on>
+        <sys_id>dedad1002bc03950c0fb4cfbad01a0b1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-10 14:53:27</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+</record_update>

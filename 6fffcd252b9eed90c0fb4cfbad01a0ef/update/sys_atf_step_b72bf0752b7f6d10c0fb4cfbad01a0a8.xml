@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>3</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-03 12:50:55</sys_created_on>
+        <sys_id>b72bf0752b7f6d10c0fb4cfbad01a0a8</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_b72bf0752b7f6d10c0fb4cfbad01a0a8</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-09-27 12:51:19</sys_updated_on>
+        <table/>
+        <test display_value="Notification SM.now - ConditionControllerProcessor - sendNotification()">9bea7c352b7f6d10c0fb4cfbad01a054</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=b72bf0752b7f6d10c0fb4cfbad01a0a8"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>b72bf0752b7f6d10c0fb4cfbad01a0a8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-03 12:50:55</sys_created_on>
+        <sys_id>97abb8752b7f6d10c0fb4cfbad01a05d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-03 12:50:55</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>b72bf0752b7f6d10c0fb4cfbad01a0a8</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-03 12:50:55</sys_created_on>
+        <sys_id>9babb8752b7f6d10c0fb4cfbad01a05d</sys_id>
+        <sys_mod_count>12</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-09-27 12:50:56</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {&#13;
+    // add test script here&#13;
+&#13;
+	/*let mail = new GlideRecord ('sysevent_email_action');&#13;
+	mail.newRecord();&#13;
+	mail.setValue ('name', 'sendNotification');&#13;
+	mail.setValue ('collection', 'incident');&#13;
+*/&#13;
+	let business_service = new GlideRecord ('cmdb_ci_service_business');&#13;
+	business_service.get (steps('0acc74f52b7f6d10c0fb4cfbad01a005').record_id);&#13;
+&#13;
+	let mail = new GlideRecord('sysevent_email_action');&#13;
+	mail.get(steps('aa8c7cb52b7f6d10c0fb4cfbad01a073').record_id);&#13;
+&#13;
+	let enabled = new GlideRecord ('x_dtitg_notificati_enabled');&#13;
+	enabled.newRecord();&#13;
+	enabled.setValue ('notification', mail.sys_id);&#13;
+	enabled.setValue ('business_service', business_service.sys_id);&#13;
+&#13;
+	let incident = new GlideRecord ('incident');&#13;
+	incident.newRecord();&#13;
+	incident.setValue ('business_service', business_service.sys_id);&#13;
+&#13;
+&#13;
+	&#13;
+&#13;
+	/*&#13;
+	let gr = new GlideRecord('incident');&#13;
+	gr.addQuery('sys_id', steps('b43dbcf52b7f6d10c0fb4cfbad01a0c8').record_id);&#13;
+	gr.query();&#13;
+	gr.next();&#13;
+	const incident = gr;*/&#13;
+&#13;
+	const conf = {&#13;
+		name: mail.name,&#13;
+		current: incident,&#13;
+		event: {}&#13;
+	}&#13;
+&#13;
+	const helper = new ConditionControllerProcessor();&#13;
+	const result = helper.sendNotification(conf);&#13;
+&#13;
+	assertEqual({&#13;
+		name: 'ConditionControllerProcessor#sendNotification',&#13;
+		value: result,&#13;
+		shouldbe: true&#13;
+	});&#13;
+&#13;
+})(outputs, steps, params, stepResult, assertEqual);&#13;
+&#13;
+</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+</record_update>

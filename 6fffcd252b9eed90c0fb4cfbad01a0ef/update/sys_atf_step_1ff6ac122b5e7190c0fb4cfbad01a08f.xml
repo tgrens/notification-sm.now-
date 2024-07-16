@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Assert that the text 'Test notifications' is on the page.
+With a failure timeout of 5 Seconds</description>
+        <display_name>Assert Text on Page (Custom UI)</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>15</order>
+        <step_config display_value="Assert Text on Page (Custom UI)">475e0de3d732130089fca2285e610361</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:28</sys_created_on>
+        <sys_id>1ff6ac122b5e7190c0fb4cfbad01a08f</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Assert Text on Page (Custom UI)</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_1ff6ac122b5e7190c0fb4cfbad01a08f</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-11-17 15:16:02</sys_updated_on>
+        <table/>
+        <test display_value=" Notification SM.now-Setup Notifications(SMNOW-660)-1">5ef6e8122b5e7190c0fb4cfbad01a08e</test>
+        <timeout>1970-01-01 00:00:05</timeout>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=1ff6ac122b5e7190c0fb4cfbad01a08f"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>1ff6ac122b5e7190c0fb4cfbad01a08f</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:28</sys_created_on>
+        <sys_id>1ff6ac122b5e7190c0fb4cfbad01a090</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_nsharma2</sys_updated_by>
+        <sys_updated_on>2023-11-06 07:14:28</sys_updated_on>
+        <value>Test notifications</value>
+        <variable display_value="Text">1c267c5cd703130089fca2285e61035b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>1ff6ac122b5e7190c0fb4cfbad01a08f</document_key>
+        <order>300</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:28</sys_created_on>
+        <sys_id>5bf6ac122b5e7190c0fb4cfbad01a090</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_nsharma2</sys_updated_by>
+        <sys_updated_on>2023-11-06 07:14:28</sys_updated_on>
+        <value>21.0</value>
+        <variable display_value="Custom UI version">4a49b1d3b700101044026848ee11a980</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>1ff6ac122b5e7190c0fb4cfbad01a08f</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:28</sys_created_on>
+        <sys_id>97f6ac122b5e7190c0fb4cfbad01a090</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_nsharma2</sys_updated_by>
+        <sys_updated_on>2023-11-06 07:14:28</sys_updated_on>
+        <value>text_on_page</value>
+        <variable display_value="Assert Type">86e4f05cd703130089fca2285e610307</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_475e0de3d732130089fca2285e610361^id=1ff6ac122b5e7190c0fb4cfbad01a08f"/>
+</record_update>

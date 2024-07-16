@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.ValueFieldTranslator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Retunrs the display value of any field type.</description>
+        <name>ValueFieldTranslator</name>
+        <script><![CDATA[/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class ValueFieldTranslator
+ * @description Retunrs the display value of any field type.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class ValueFieldTranslator extends FieldTranslator {
+
+    /**
+     * Retunrs the display value of any field type.
+     *
+     * @param {Object} record GliedRecord object
+     * @param {String} field Column name for which to return the GlideElement object.
+     * @param {String} languageId email language id
+     *
+     * @returns {String} value display value of the field
+     *
+     */
+    translateFieldValue(record, field, languageId) {
+
+        return GlideRecordUtils.getElementDisplayValue(record, field);
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-28 06:46:09</sys_created_on>
+        <sys_id>3e28b1402b33a510c0fb4cfbad01a042</sys_id>
+        <sys_mod_count>27</sys_mod_count>
+        <sys_name>ValueFieldTranslator</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_3e28b1402b33a510c0fb4cfbad01a042</sys_update_name>
+        <sys_updated_by>admin_tonguyen</sys_updated_by>
+        <sys_updated_on>2023-09-16 05:10:31</sys_updated_on>
+    </sys_script_include>
+</record_update>

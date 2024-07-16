@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.QueryBuilder</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Helper script to build encoded queries</description>
+        <name>QueryBuilder</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class QueryBuilder
+ * @description Helper script to build encoded queries
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class QueryBuilder {
+
+    /**
+     * @description Returns an encoded query based on the given parameters
+     *
+     * @param {queryObj} queryObj object of columns and identifier
+     *
+     * @returns {String} encoded query
+     */
+    static findEntrieByMultipleAnd(queryObj) {
+        let lastProperty = Object.keys(queryObj).pop();
+        const builder = new x_dtitg_core_smnow.StringBuilder();
+
+        // eslint-disable-next-line guard-for-in
+        for (const property in queryObj) {
+            builder.append(property);
+            builder.append('=');
+            builder.append(queryObj[property]);
+
+            if(property !== lastProperty) {
+                builder.append('^');
+            }
+        }
+
+        return builder.toString();
+    }
+
+    /**
+     *  Returns an encoded query based on the given parameters
+     *
+     * @param {String} column Name of the instantiated GlideRecord column to search for the specified value parameter
+     * @param {String} identifier Value to match.
+     *
+     * @returns {String} encoded query
+     */
+    static findEntries(column, identifier) {
+        const builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(column);
+        builder.append('=');
+        builder.append(identifier);
+
+        return builder.toString();
+    }
+
+    /**
+     * @description Returns an encoded query based on the given parameters
+     *
+     * @param {String} notification sys_id
+     * @param {String} company sys_id
+     * @param {String} businessService sys_id
+     * @param {String} assignmentGroup sys_id
+     *
+     * @returns {String} encoded query
+     */
+    static findEnabledEntrie(notification, company, businessService, assignmentGroup) {
+        const builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(`notification.sys_id=${ notification}`);
+        builder.append(`^company.sys_id=${ company}`);
+        builder.append(`^ORbusiness_service.sys_id=${ businessService}`);
+        builder.append(`^ORassignment_group.sys_id=${ assignmentGroup}`);
+
+
+        return builder.toString();
+    }
+
+    /**
+     *  Returns an encoded query based on the given parameters
+     *
+     * @param {String} column Name of the instantiated GlideRecord column to search for the specified value parameter
+     * @param {String} identifier Value to match.
+     *
+     * @returns {String} encoded query
+     */
+    static findActiveEntries(column, identifier) {
+        const builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('active=true');
+        builder.append(`^${ column}`);
+        builder.append('=');
+        builder.append(identifier);
+
+        return builder.toString();
+    }
+
+    /**
+     * Returns an encoded query based on the given parameters
+     *
+     * @param {String} company sys_id
+     * @param {String} notification sys_id
+     *
+     * @returns {String} encoded query
+     */
+    static findToNotifiedCompany(company, notification) {
+        const builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('active=true');
+        builder.append(`^company=${ company}`);
+        builder.append(`^notification=${ notification}`);
+
+        return builder.toString();
+    }
+
+    /**
+     * Returns an encoded query based on the given parameters
+     *
+     * @param {String} businessService sys_id
+     * @param {String} notification sys_id
+     *
+     * @returns {String} encoded query
+     */
+    static findToNotifiedBusinessService(businessService, notification) {
+        const builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('active=true');
+        builder.append(`^business_service=${ businessService}`);
+        builder.append(`^notification=${ notification}`);
+
+        return builder.toString();
+    }
+
+    /**
+     * @description Returns an encoded query based on the given parameters
+     *
+     * @param {String} assignmentGroup sys_id
+     * @param {String} notification sys_id
+     *
+     * @returns {String} encoded query
+     */
+    static findToNotifiedAssignmentGroup(assignmentGroup, notification) {
+        const builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('active=true');
+        builder.append(`^assignment_group=${ assignmentGroup}`);
+        builder.append(`^notification=${ notification}`);
+
+        return builder.toString();
+    }
+
+    /**
+     * Returns an encoded query based on the given parameters
+     *
+     * @param {String} name name of the notifcation
+     *
+     * @returns {String} encoded query
+     */
+    static findNotification(name) {
+        const builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('active=true');
+        builder.append(`^name=${ name}`);
+
+        return builder.toString();
+    }
+
+    /**
+     * Returns an encoded query based on the given parameters
+     *
+     * @param {Array} groups comma sperated list of group sys_ids
+     *
+     * @returns {String} encoded query
+     */
+    static findGroupsMembers(groups) {
+        const builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append(`group=${ groups.shift()}`);
+
+        // eslint-disable-next-line guard-for-in
+        for (let index in groups) {
+            let group = groups[index];
+            builder.append(`^ORgroup=${ group}`);
+        }
+
+        return builder.toString();
+    }
+
+    /**
+     * Returns an encoded query based on the given parameters
+     *
+     * @param {String} userSysId sys_id of the user
+     * @param {String} preference name of the preference
+     *
+     * @returns {String} encoded query
+     */
+    static findUserPreferenceByName(userSysId, preference) {
+        const builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(`user.sys_id=${ userSysId}`);
+        builder.append(`^name=${ preference}`);
+
+        return builder.toString();
+    }
+
+    /**
+     * Returns an encoded query based on the given parameters
+     *
+     * @param {String} name table name
+     * @param {String} element field name
+     * @param {String} value choice value
+     * @param {String} languageId language id
+     *
+     * @returns {Array} array of encoded query
+     */
+    static findChoiceTranslation(name, element, value, languageId) {
+        const queries = new Set();
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('inactive=false');
+        builder.append(`^name=${ name}`);
+        builder.append(`^element=${ element}`);
+        builder.append(`^value=${ value}`);
+        builder.append(`^language=${ languageId}`);
+
+        queries.add(builder.toString());
+
+        builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('inactive=false');
+        builder.append(`^name=${ name}`);
+        builder.append(`^element=${ element}`);
+        builder.append(`^value=${ value}`);
+        builder.append(`^language=${ Constants.DEFAULT_LANGUAGE_ID}`);
+
+        queries.add(builder.toString());
+
+        return queries;
+    }
+
+    /**
+     * Returns an array encoded query based on the given parameters.
+     *
+     * @param {String} documentkey document key
+     * @param {String} tablename name table name
+     * @param {String} fieldname field name
+     * @param {String} languageId language id
+     *
+     * @returns {Array} array of encoded query
+     *
+     */
+    static findTextTranslation(documentkey, tablename, fieldname, languageId) {
+        const queries = new Set();
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(`documentkey=${ documentkey}`);
+        builder.append(`^tablename=${ tablename}`);
+        builder.append(`^fieldname=${ fieldname}`);
+        builder.append(`^language=${ languageId}`);
+
+        queries.add(builder.toString());
+
+        builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(`documentkey=${ documentkey}`);
+        builder.append(`^tablename=${ tablename}`);
+        builder.append(`^fieldname=${ fieldname}`);
+        builder.append(`^language=${ Constants.DEFAULT_LANGUAGE_ID}`);
+
+        queries.add(builder.toString());
+
+        return queries;
+    }
+
+    /**
+     * Returns an array encoded query based on the given parameters.
+     *
+     * @param {String} key points to x_dtitg_notificati_translations.key
+     * @param {String} notification sys_id of sysevent_email_action
+     * @param {String} assignmentGroup assignment_group sys_id
+     * @param {String} languageId language id
+     *
+     * @returns {Array} array of encoded query
+     */
+    static findTranslation(key, notification, assignmentGroup, languageId) {
+        const queries = new Set();
+        // assignment_groupLIKE96e68f912be9bd10c0fb4cfbad01a039
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('active=true')
+            .append(`^key=${ key}`)
+            .append(`^notification=${ notification}`)
+            .append(`^assignment_groupLIKE${ assignmentGroup}`)
+            .append(`^language_id=${ languageId}`);
+        queries.add(builder.toString());
+
+        builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('active=true')
+            .append(`^key=${ key}`)
+            .append(`^notification=${ notification}`)
+            .append(`^assignment_groupLIKE${ assignmentGroup}`)
+            .append(`^language_id=${ Constants.DEFAULT_LANGUAGE_ID}`);
+        queries.add(builder.toString());
+
+        builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('active=true')
+            .append(`^key=${ key}`)
+            .append(`^notification=${ notification}`)
+            .append('^assignment_groupISEMPTY')
+            .append(`^language_id=${ languageId}`);
+        queries.add(builder.toString());
+
+        builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('active=true')
+            .append(`^key=${ key}`)
+            .append(`^notification=${ notification}`)
+            .append('^assignment_groupISEMPTY')
+            .append(`^language_id=${ Constants.DEFAULT_LANGUAGE_ID}`);
+        queries.add(builder.toString());
+
+        builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('active=true')
+            .append(`^key=${ key}`)
+            .append('^notificationISEMPTY')
+            .append(`^assignment_groupLIKE${ assignmentGroup}`)
+            .append(`^language_id=${ languageId}`);
+        queries.add(builder.toString());
+
+        builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('active=true')
+            .append(`^key=${ key}`)
+            .append('^notificationISEMPTY')
+            .append(`^assignment_groupLIKE${ assignmentGroup}`)
+            .append(`^language_id=${ Constants.DEFAULT_LANGUAGE_ID}`);
+        queries.add(builder.toString());
+
+        builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('active=true')
+            .append(`^key=${ key}`)
+            .append('^notificationISEMPTY')
+            .append('^assignment_groupISEMPTY')
+            .append(`^language_id=${ languageId}`);
+        queries.add(builder.toString());
+
+        builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('active=true')
+            .append(`^key=${ key}`)
+            .append('^notificationISEMPTY')
+            .append('^assignment_groupISEMPTY')
+            .append(`^language_id=${ Constants.DEFAULT_LANGUAGE_ID}`);
+        queries.add(builder.toString());
+
+        return queries;
+    }
+
+    /**
+     * Returns an encoded query based on the given parameters
+     *
+     * @param {String} tableName table name
+     *
+     * @returns {String} encoded query
+     */
+    static findParentTable(tableName) {
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(`name=${ tableName}`);
+
+        return builder.toString();
+    }
+
+    /**
+     * Returns an encoded query based on the given parameters
+     *
+     * @param {String} field field name
+     * @param {String} table tables
+     * @param {String} parent parent tables
+     *
+     * @returns {String} encoded query
+     */
+    static findType(field, table, parent) {
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(`element=${ field}`);
+        builder.append(`^nameIN${ table}`);
+
+        if (parent) {
+            builder.append(`,${ parent}`);
+        }
+
+        return builder.toString();
+    }
+
+    /**
+     * Returns an encoded query based on the given parameters
+     *
+     * @param {String} table table names
+     * @param {String} parent parent table names
+     * @param {String} elements element name
+     * @param {String} language language
+     *
+     * @returns {Array} array of encoded query
+     */
+    static findTranslatedFieldQuery(table, parent, elements, language) {
+        const queries = new Set();
+
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append(`nameIN${ table}`);
+        if (parent) {
+            builder.append(`,${ parent}`);
+        }
+        builder.append(`^elementIN${ elements}`);
+        builder.append(`^language=${ language}`);
+
+        queries.add(builder.toString());
+
+        builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(`nameIN${ table}`);
+        if (parent) {
+            builder.append(`,${ parent}`);
+        }
+        builder.append(`^elementIN${ elements}`);
+        builder.append(`^language=${ Constants.DEFAULT_LANGUAGE_ID}`);
+
+        queries.add(builder.toString());
+
+        return queries;
+    }
+
+    /**
+     * @description Returns an encoded query based on the given parameters
+     *
+     * @param {String} reciepient userID of the user
+     *
+     * @returns {String} encoded query
+     */
+    static findUser(reciepient) {
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('active=true');
+        builder.append('^x_dtitg_itsm_smnow_temporary_user=true');
+        builder.append(`^sys_id=${ reciepient}`);
+
+        return builder.toString();
+    }
+
+    /**
+     * @description Returns an encoded query based on the given parameters
+     *
+     * @param {String} userID of the user
+     * @param {String} role sys_id of the role
+     * @returns {String} encoded query
+     */
+    static findRole(userID, role) {
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(`user=${ userID}`);
+        builder.append(`^role=${ role}`);
+
+        return builder.toString();
+    }
+
+    /**
+     * @description Returns an encoded query based on the given parameters
+     *
+     * @param {String} userID of the user
+     *
+     * @returns {String} encoded query
+     */
+    static findRoleCount(userID) {
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(`user=${ userID}`);
+        // builder.append(`^role=${ role}`);
+
+        return builder.toString();
+    }
+
+
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-21 12:16:40</sys_created_on>
+        <sys_id>7fb7fc162b1ee1d0c0fb4cfbad01a0e8</sys_id>
+        <sys_mod_count>122</sys_mod_count>
+        <sys_name>QueryBuilder</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_7fb7fc162b1ee1d0c0fb4cfbad01a0e8</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-02 06:37:13</sys_updated_on>
+    </sys_script_include>
+</record_update>

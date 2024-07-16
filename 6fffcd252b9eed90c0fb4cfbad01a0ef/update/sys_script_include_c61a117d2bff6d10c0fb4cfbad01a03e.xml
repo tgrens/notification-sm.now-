@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.HtmlTableDataGenerator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Generates the template data</description>
+        <name>HtmlTableDataGenerator</name>
+        <script><![CDATA[/* eslint-disable no-empty */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class HtmlTableDataGenerator
+ * @description Generates the template data
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class HtmlTableDataGenerator {
+
+    /**
+     * Generates the template data
+     *
+     * @param {Object} glRecord GlideRecord
+     * @param {String} tableName table name
+     * @param {Array} fieldList field list
+     * @param {String} languageId language id
+     *
+     * @returns {Object} templateData see TemplateData.js
+     */
+    generateTemplateData(glRecord, tableName, fieldList, languageId) {
+        let builder = new FieldLabelObjectBuilder();
+        let fieldLabels = builder.construct(tableName, fieldList, languageId);
+
+        let translator = new FieldTranslatorProcessor();
+        let templateData = new TemplateData();
+
+        while (glRecord.next()) {
+            let tableRecord = new TableRecord();
+            for (let index = 0; index < fieldList.length; index++) {
+                let field = fieldList[index];
+                let fieldRecord = new FieldRecord();
+                let label = this._findLabel(fieldLabels, field);
+                fieldRecord.label = label;
+                fieldRecord.value = translator.translate(glRecord, field, languageId);
+                fieldRecord.field = field;
+
+                tableRecord.addFieldRecord(fieldRecord);
+            }
+
+            templateData.addRecord(tableRecord);
+        }
+
+        return templateData;
+    }
+
+    /**
+     * Returns the lable for a given element.
+     *
+     * @param {Array} fieldLabels array of field label objects
+     * @param {String} element element name
+     *
+     * @returns {String} label
+     */
+    _findLabel(fieldLabels, element) {
+        let label = element;
+
+        for (let index = 0; index < fieldLabels.length; index++) {
+            let labelObj = fieldLabels[index];
+
+            // eslint-disable-next-line eqeqeq
+            if (labelObj.element == element) {
+                label = labelObj.label;
+                break;
+            }
+        }
+
+        return label;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-07-03 15:04:46</sys_created_on>
+        <sys_id>c61a117d2bff6d10c0fb4cfbad01a03e</sys_id>
+        <sys_mod_count>53</sys_mod_count>
+        <sys_name>HtmlTableDataGenerator</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_c61a117d2bff6d10c0fb4cfbad01a03e</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-17 05:19:59</sys_updated_on>
+    </sys_script_include>
+</record_update>

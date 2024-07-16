@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.BusinessServiceDeterminerProcessor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Client passes a chain object. This improves flexibility and makes testing  easier.</description>
+        <name>BusinessServiceDeterminerProcessor</name>
+        <script><![CDATA[/* eslint-disable no-undef */
+/* eslint-disable id-length */
+/* eslint-disable no-unused-vars */
+/**
+ * @class BusinessServiceDeterminerProcessor
+ * @description Client passes a chain object. This improves flexibility and makes testing  easier.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class BusinessServiceDeterminerProcessor {
+
+
+    /**
+     * Function that finds (Chain of Responsibility) the
+     * business service of a given tickte.
+     *
+     * @param {Object} current GlideRecord object for the ticket record
+     * @param {Object} sysEventEmailAction GlideRecord object for the email notification (sysevent_email_action).
+     * @param {Object} event GlideRecord object for the event that fired the notification (sysevent).
+     *
+     * @returns {String} service sys_id of the business service
+     */
+    findBusinessService(current, sysEventEmailAction, event) {
+        let businessService = '';
+
+        // Chain ordering:
+        // 1. TicketBusinessService
+        // 2. EventTicketBusinessService
+
+        let ticketBusinessService = new x_dtitg_notificati.TicketBusinessService();
+
+        let eventTicketBusinessService = new x_dtitg_notificati.EventTicketBusinessService();
+        eventTicketBusinessService.setNext(ticketBusinessService);
+        // initialize chain of responsibility. Execute first chain in queue
+        businessService = eventTicketBusinessService.process(current, sysEventEmailAction, event);
+
+        return businessService;
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-20 11:00:43</sys_created_on>
+        <sys_id>4fa52d612baf6190c0fb4cfbad01a04f</sys_id>
+        <sys_mod_count>15</sys_mod_count>
+        <sys_name>BusinessServiceDeterminerProcessor</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_4fa52d612baf6190c0fb4cfbad01a04f</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 10:08:15</sys_updated_on>
+    </sys_script_include>
+</record_update>

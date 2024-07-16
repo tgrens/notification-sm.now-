@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>false</active>
+        <copied_from/>
+        <description>Insert a record into 'incident' with the following values:
+Short description = Notification SM.now - TranslationService - process()
+Confirm the record was successfully inserted</description>
+        <display_name>Record Insert</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>1</order>
+        <step_config display_value="Record Insert">14872288df60220062fe6c7a4df26319</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-17 11:58:46</sys_created_on>
+        <sys_id>77e5b05e2b887510c0fb4cfbad01a0b1</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Record Insert</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_77e5b05e2b887510c0fb4cfbad01a0b1</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-09-27 14:36:48</sys_updated_on>
+        <table>incident</table>
+        <test display_value="Notification SM.now - TranslationService - process()">a1f264992b087110c0fb4cfbad01a0cb</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=77e5b05e2b887510c0fb4cfbad01a0b1"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>77e5b05e2b887510c0fb4cfbad01a0b1</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-17 11:58:47</sys_created_on>
+        <sys_id>3ff5f05e2b887510c0fb4cfbad01a07b</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-09-27 14:32:28</sys_updated_on>
+        <value>short_description=Notification SM.now - TranslationService - process()^EQ</value>
+        <variable display_value="Field values">dd54cf535320220002c6435723dc34fd</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>77e5b05e2b887510c0fb4cfbad01a0b1</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-17 11:58:47</sys_created_on>
+        <sys_id>7bf5f05e2b887510c0fb4cfbad01a07b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-17 11:58:47</sys_updated_on>
+        <value>incident</value>
+        <variable display_value="Table">90144b535320220002c6435723dc3488</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>77e5b05e2b887510c0fb4cfbad01a0b1</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-17 11:58:47</sys_created_on>
+        <sys_id>b7f5f05e2b887510c0fb4cfbad01a07b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-17 11:58:47</sys_updated_on>
+        <value>1</value>
+        <variable display_value="Enforce security">e6e3c7535320220002c6435723dc3496</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>77e5b05e2b887510c0fb4cfbad01a0b1</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-17 11:58:47</sys_created_on>
+        <sys_id>f3f5f05e2b887510c0fb4cfbad01a07b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-17 11:58:47</sys_updated_on>
+        <value>record_successfully_inserted</value>
+        <variable display_value="Assert type">9024a37f671003007ba405225685efe5</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_14872288df60220062fe6c7a4df26319^id=77e5b05e2b887510c0fb4cfbad01a0b1"/>
+</record_update>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.BusinessServiceCondition</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Validates if a email has to be send for a given ticket.</description>
+        <name>BusinessServiceCondition</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef*/
+/**
+ * @class BusinessServiceCondition
+ * @description Validates if a email has to be send for a given ticket.
+ * @since 09/06/2023
+ * @date  09/08/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class BusinessServiceCondition extends ConditionController {
+
+    /**
+     * Validates if a email has to be send for a given ticket.
+     *
+     * @param {object} conf see NotificationConditionController#notificationEnabled()
+     *
+     * @returns {Boolean} true/false
+     */
+    checkCondition(conf) {
+        let hasToNotified = true;
+
+        let sysEventEmailAction = x_dtitg_core_smnow.GlideRecordUtils.getRecord(Constants.NOTIFICATION, 'name', conf.name);
+        let hasEntry = this._hasEnabledEntries(sysEventEmailAction);
+
+        gs.debug(`[BusinessServiceCondition][_validateNotification] hasEntry => ${ hasEntry}`);
+
+        if (hasEntry) {
+            let processor = new BusinessServiceDeterminerProcessor();
+            let businessService = processor.findBusinessService(conf.current, sysEventEmailAction, conf.event);
+            hasToNotified = this._hasToNotified(businessService, sysEventEmailAction);
+        }
+
+        gs.debug(`[BusinessServiceCondition][_validateNotification] hasToNotified => ${ hasToNotified}`);
+
+        return hasToNotified;
+    }
+
+    /**
+     * Checks whether the table "Enabled (x_dtitg_notificati_enabled)" contains an entry.
+     *
+     * @param {Object} sysEventEmailAction sysevent_email_action GlideRecord object
+     *
+     * @returns {Boolean} true/false
+     */
+    _hasEnabledEntries(sysEventEmailAction) {
+        let query = QueryBuilder.findEntries('notification', sysEventEmailAction.getUniqueValue());
+
+        gs.debug(`[BusinessServiceCondition][_hasEnabledEntries] query => ${ query}`);
+
+        return x_dtitg_core_smnow.GlideRecordUtils.hasEntry(Constants.ENABLED, query);
+    }
+
+    /**
+     * Checks if the table "Enabled (x_dtitg_notificati_enabled)" contains an entry for the given paramters.
+     *
+     * @param {String} businessService sys_id
+     * @param {Object} sysEventEmailAction sysevent_email_action GlideRecord object
+     *
+     * @returns {Boolean} true/false
+     */
+    _hasToNotified(businessService, sysEventEmailAction) {
+        let query = QueryBuilder.findToNotifiedBusinessService(businessService, sysEventEmailAction.getUniqueValue());
+
+        gs.debug(`[BusinessServiceCondition][_hasToNotified] query => ${ query}`);
+
+        return x_dtitg_core_smnow.GlideRecordUtils.hasEntry(Constants.ENABLED, query);
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-20 09:47:09</sys_created_on>
+        <sys_id>e8d4d9ed2b2f6190c0fb4cfbad01a0fc</sys_id>
+        <sys_mod_count>30</sys_mod_count>
+        <sys_name>BusinessServiceCondition</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_e8d4d9ed2b2f6190c0fb4cfbad01a0fc</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 10:21:08</sys_updated_on>
+    </sys_script_include>
+</record_update>

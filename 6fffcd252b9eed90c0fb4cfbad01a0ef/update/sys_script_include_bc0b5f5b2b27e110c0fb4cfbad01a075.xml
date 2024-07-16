@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.ChoiceFieldTranslator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Translates the field values of field type integer, choice or string</description>
+        <name>ChoiceFieldTranslator</name>
+        <script><![CDATA[/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/**
+ * @class ChoiceFieldTranslator
+ * @description Translates the field values of field type integer, choice or string
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class ChoiceFieldTranslator extends FieldTranslator {
+
+    /**
+     * Translates the field values of field type integer, choice or string
+     *
+     * @param {Object} record GliedRecord object
+     * @param {String} field Column name for which to return the GlideElement object.
+     * @param {String} languageId email language id
+     *
+     * @returns {String} label the translated label
+     *
+     */
+    translateFieldValue(record, field, languageId) {
+        const types = Constants.INTERNAL_TYPES;
+        const limit = 1;
+        let label = '';
+        let internalType = GlideRecordUtils.getInternalType(record, field);
+
+        gs.debug(`[Notifications SM.Now][ChoiceFieldTranslator][translateFieldValue] internalType ==> ${internalType}`);
+
+        if (internalType === types.INTEGER || internalType === types.CHOICE || internalType === types.STRING) {
+            let name = UtilityFunctions.determineTable(record);
+            let value = GlideRecordUtils.getElementValue(record, field);
+            let queries = QueryBuilder.findChoiceTranslation(name, field, value, languageId);
+
+
+            // eslint-disable-next-line guard-for-in
+            for (const query of queries) {
+                // eslint-disable-next-line camelcase
+                let gr = x_dtitg_core_smnow.GlideRecordUtils.getLimitedGlideRecord(Constants.SYS_CHOICE, query, limit);
+                if (gr.next()) {
+                    label = gr.getValue('label');
+
+                    break;
+                }
+            }
+        }
+
+        return label;
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-26 06:03:25</sys_created_on>
+        <sys_id>bc0b5f5b2b27e110c0fb4cfbad01a075</sys_id>
+        <sys_mod_count>26</sys_mod_count>
+        <sys_name>ChoiceFieldTranslator</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_bc0b5f5b2b27e110c0fb4cfbad01a075</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2023-12-14 10:16:37</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.FieldRecipients</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Collects the recipients from the sysevent_email_action.recipient_fields.&#13;
+</description>
+        <name>FieldRecipients</name>
+        <script><![CDATA[/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class FieldRecipients
+ * @description Collects the recipients from the sysevent_email_action.recipient_fields.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class FieldRecipients extends RecipientCollector {
+
+    /**
+     * Collects the recipients from the sysevent_email_action.recipient_fields.
+     *
+     * @param {Object} current GlideRecord object for the ticket record
+     * @param {Object} sysEventEmailAction GlideRecord object for the email notification (sysevent_email_action).
+     * @param {Object} event GlideRecord object for the event that fired the notification (sysevent).
+     *
+     * @returns {Array} recipientList
+     */
+    determineRecipient(current, sysEventEmailAction, event) {
+        let recipientList = [];
+        let recipientFields = sysEventEmailAction.getValue('recipient_fields');
+
+        if (recipientFields) {
+            gs.debug(`[Notifications SM.Now][FieldRecipientsListBuilder][construct] recipientFields ==> ${ recipientFields}`);
+
+            let recipients = recipientFields.split(',');
+
+            // eslint-disable-next-line guard-for-in
+            for (let index in recipients) {
+                let field = recipients[index];
+                let recipient = GlideRecordUtils.getElement(current, field);
+
+                recipientList.push(recipient);
+            }
+        }
+
+
+        gs.info(`[Notification SM.now][FieldRecipients][determineRecipient] recipientList => ${ recipientList}`);
+
+
+        return recipientList;
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-05-22 12:39:09</sys_created_on>
+        <sys_id>e3b3ecd42b0be910c0fb4cfbad01a0b6</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>FieldRecipients</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_e3b3ecd42b0be910c0fb4cfbad01a0b6</sys_update_name>
+        <sys_updated_by>admin_tonguyen</sys_updated_by>
+        <sys_updated_on>2023-09-16 04:44:57</sys_updated_on>
+    </sys_script_include>
+</record_update>

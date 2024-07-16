@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test_suite_test">
+    <sys_atf_test_suite_test action="INSERT_OR_UPDATE">
+        <abort_on_failure>false</abort_on_failure>
+        <order/>
+        <sys_class_name>sys_atf_test_suite_test</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-05-02 11:36:37</sys_created_on>
+        <sys_id>9f9d4aaf8cfd0e145dcf10bd1c643b08</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>09fb8e2f8cfd0e145dcf10bd1c643b5c</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_test_suite_test_9f9d4aaf8cfd0e145dcf10bd1c643b08</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-02 11:36:37</sys_updated_on>
+        <test display_value="Notification SM.now - AppInstallSetEmailScript - installScript()">09fb8e2f8cfd0e145dcf10bd1c643b5c</test>
+        <test_suite display_value="Notification SM.now - AppInstallSetEmailScript">f4ed4eaf8cfd0e145dcf10bd1c643b22</test_suite>
+    </sys_atf_test_suite_test>
+</record_update>

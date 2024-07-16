@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test_suite_test">
+    <sys_atf_test_suite_test action="INSERT_OR_UPDATE">
+        <abort_on_failure>false</abort_on_failure>
+        <order>100</order>
+        <sys_class_name>sys_atf_test_suite_test</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-04-30 15:17:09</sys_created_on>
+        <sys_id>1b3d208ff8318e145dcfbd805aab8a44</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>5b5bac438cbd4a145dcf10bd1c643b5d</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_test_suite_test_1b3d208ff8318e145dcfbd805aab8a44</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-02 09:27:32</sys_updated_on>
+        <test display_value="Notification SM.now - TicketAssignmentGroup - determineAssignmentGroup()">5b5bac438cbd4a145dcf10bd1c643b5d</test>
+        <test_suite display_value="Notification SM.now - EventTicketAssignmentGroup">c3ece04ff8318e145dcfbd805aab8a42</test_suite>
+    </sys_atf_test_suite_test>
+</record_update>

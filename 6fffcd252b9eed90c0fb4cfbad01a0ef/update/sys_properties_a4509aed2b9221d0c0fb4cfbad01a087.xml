@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_properties">
+    <sys_properties action="INSERT_OR_UPDATE">
+        <choices>Debug=debug,Info=info,Warn=warn,Error=error</choices>
+        <description>Controls the verbosity of log output produced by Notification SM.now.</description>
+        <ignore_cache>true</ignore_cache>
+        <is_private>false</is_private>
+        <name>x_dtitg_notificati.logging.verbosity</name>
+        <read_roles/>
+        <suffix>logging.verbosity</suffix>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-19 10:49:46</sys_created_on>
+        <sys_id>a4509aed2b9221d0c0fb4cfbad01a087</sys_id>
+        <sys_mod_count>9</sys_mod_count>
+        <sys_name>x_dtitg_notificati.logging.verbosity</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_properties_a4509aed2b9221d0c0fb4cfbad01a087</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 10:02:14</sys_updated_on>
+        <type>choicelist</type>
+        <value>debug</value>
+        <write_roles/>
+    </sys_properties>
+    <sys_translated_text action="delete_multiple" query="documentkey=a4509aed2b9221d0c0fb4cfbad01a087"/>
+</record_update>

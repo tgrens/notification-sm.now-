@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.UnknownUserLink</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the notification(URL of a ticket) to be sent for ticket.</description>
+        <name>UnknownUserLink</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/**
+ * @class UnknownUserLink
+ * @description Determines the notification to be sent for incident ticket.
+ * @since 13/03/2024
+ * @date  13/03/2024
+ * @version 1.0.0
+ * @author Siddhant Salunkhe E-Mail: <siddhant.salunkhe@t-systems.com>
+ *
+ */
+class UnknownUserLink extends LinkGenerator {
+
+    /**
+     * Generate the ticket link
+     *
+	 * @param {Object} notifParams see email.engine.js
+	 * @param {Object} currObj Current GlideRecord Object
+     * @returns {String} ticket link
+     *
+     *
+     */
+    createTicketURL(notifParams, currObj) {
+        const LIMIT = 1;
+        const query = QueryBuilder.findUser(notifParams.recipients);
+        let link = '';
+        let gruser = x_dtitg_core_smnow.GlideRecordUtils.getLimitedGlideRecord('sys_user', query, LIMIT);
+
+        if(gruser.next()) {
+            gs.debug(`[UnknownUserLink] gruser ==> ${ JSON.stringify(gruser)}`);
+            link = Constants.UNKNOW_USER;
+        }
+
+        return link;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-03-12 07:22:49</sys_created_on>
+        <sys_id>898a2ec744f4c25c5dcf3c103cd4028f</sys_id>
+        <sys_mod_count>21</sys_mod_count>
+        <sys_name>UnknownUserLink</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_898a2ec744f4c25c5dcf3c103cd4028f</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-03 11:35:20</sys_updated_on>
+    </sys_script_include>
+</record_update>

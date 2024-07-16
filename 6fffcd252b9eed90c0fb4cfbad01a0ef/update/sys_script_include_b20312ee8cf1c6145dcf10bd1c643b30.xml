@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.AppInstallSetEmailScript</api_name>
+        <caller_access>1</caller_access>
+        <client_callable>false</client_callable>
+        <description>This script installs the email script.</description>
+        <name>AppInstallSetEmailScript</name>
+        <script><![CDATA[/* eslint-disable require-jsdoc */
+/* eslint-disable no-unused-vars */
+/* eslint-disable new-cap */
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
+/* eslint-disable quotes */
+/**
+ * @class AppInstallSetEmailScript
+ * @description Inserts the global email.engine script
+ * @since 29/04/2024
+ * @date  29/04/2024
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class AppInstallSetEmailScript {
+
+
+    installScript(installer) {
+        let grScriptEmail = new GlideRecord('sys_script_email');
+        grScriptEmail.addQuery('name', 'email.engine');
+        grScriptEmail.query();
+
+        if (grScriptEmail.next()) {
+            installer.RecordDelete('Removescript email', 'sys_script_email', grScriptEmail.sys_id);
+        }
+
+        grScriptEmail.initialize();
+        // email.engine
+        let emailscript = "var notifParams = {\n" +
+        "    'assignmentGroup': '',\n" +
+        "    'recipients': [],\n" +
+        "    'languageId': '',\n" +
+        "    'paramObj': {}\n" +
+        "};\n" +
+        "/**\n" +
+        " * @param {Object} current Current GlideRecord\n" +
+        " * @param {Object} template Handles printing to the email message\n" +
+        " * @param {Object} email EmailOutbound object (null when called from Client Template)\n" +
+        " * @param {Object} email_action GlideRecord for the email notification (null when called from Client Template)\n" +
+        " * @param {Object} event GlideRecord for the event that fired the notification (null when called from Client Template)\n" +
+        " */\n" +
+        "(function runMailScript(current, template, email, email_action, event) {\n" +
+        "    var assignmentGroupDeterminer = new x_dtitg_notificati.AssignmentGroupDeterminerProcessor();\n" +
+        "    notifParams.assignmentGroup = assignmentGroupDeterminer.findAssignmentGroup(current, email_action, event);\n" +
+        "    \n" +
+        "	var recipientCollector = new x_dtitg_notificati.RecipientCollectorProcessor();\n" +
+        "    notifParams.recipients = recipientCollector.collectRecipient(current, email_action, event);\n" +
+        "    \n" +
+        "	var emailLanguage = new x_dtitg_notificati.EmailLanguage();\n" +
+        "    notifParams.languageId = emailLanguage.determineLanguageId(email_action, notifParams);\n" +
+        "    \n" +
+        "	var labelService = new x_dtitg_notificati.LabelService(current, template, email, email_action, event);\n" +
+        "    var subject = labelService.process(x_dtitg_notificati.Constants.SUBJECT, notifParams);\n" +
+        "    email.setSubject(subject);\n" +
+        "}(current, template, email, email_action, event));\n" +
+        "/**\n" +
+        " * @param {String} service - name of service e.g. HTMLTable\n" +
+        " * @param {Object} paramObj - paramObj dependent of service e.g. '{ \"name\": \"entries\", \"languageId\": \"en\" }');\n" +
+        " *\n" +
+        " * example:\n" +
+        " * getService('HTMLTableService', '{ \"name\": \"emcos_entries\", \"languageId\": \"en\" }');\n" +
+        " * getService('TranslationService', '{ \"key\": \"salutation\", \"languageId\": \"de\" }');\n" +
+        " **/\n" +
+        "var getService = function(service, paramObj) {\n" +
+        "    notifParams.paramObj = paramObj ? JSON.parse(paramObj) : {};\n" +
+        "    var contentService = x_dtitg_notificati.ContentServiceFactory\n" +
+        "        .getContentService(service, current, template, email, email_action, event);\n" +
+        "    contentService.process(notifParams);\n" +
+        "};\n";
+
+        installer.RecordInsertOrUpdate('Update sys_script_email', 'sys_script_email', {
+            sys_scope: 'global',
+            name: 'email.engine',
+            script: emailscript
+        });
+
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-04-29 09:26:31</sys_created_on>
+        <sys_id>b20312ee8cf1c6145dcf10bd1c643b30</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>AppInstallSetEmailScript</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_b20312ee8cf1c6145dcf10bd1c643b30</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-06 06:58:15</sys_updated_on>
+    </sys_script_include>
+</record_update>

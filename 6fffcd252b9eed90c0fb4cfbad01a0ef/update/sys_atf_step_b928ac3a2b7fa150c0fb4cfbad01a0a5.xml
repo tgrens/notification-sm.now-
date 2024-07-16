@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes>Expected Result: Translated Label</notes>
+        <order>4</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-06 14:01:39</sys_created_on>
+        <sys_id>b928ac3a2b7fa150c0fb4cfbad01a0a5</sys_id>
+        <sys_mod_count>31</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_b928ac3a2b7fa150c0fb4cfbad01a0a5</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-09-27 14:47:59</sys_updated_on>
+        <table/>
+        <test display_value="Notification SM.now - LabelService - process()">4f08e83a2b7fa150c0fb4cfbad01a0ba</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=b928ac3a2b7fa150c0fb4cfbad01a0a5"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>b928ac3a2b7fa150c0fb4cfbad01a0a5</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-06 14:01:39</sys_created_on>
+        <sys_id>2ca8a83a2b7fa150c0fb4cfbad01a004</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-06 14:01:39</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>b928ac3a2b7fa150c0fb4cfbad01a0a5</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-06 14:01:39</sys_created_on>
+        <sys_id>e0a8a83a2b7fa150c0fb4cfbad01a005</sys_id>
+        <sys_mod_count>23</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-09-27 14:47:59</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {&#13;
+&#13;
+	let emailaction = new GlideRecord('sysevent_email_action');&#13;
+	emailaction.addQuery('sys_id', steps('29d7999c2b807950c0fb4cfbad01a081').record_id);&#13;
+	emailaction.query();&#13;
+	emailaction.next();&#13;
+&#13;
+	let incident = new GlideRecord('incident');&#13;
+	incident.newRecord();&#13;
+&#13;
+	const current = incident;&#13;
+	const template = {};&#13;
+	const email = {};&#13;
+	const sysEventEmailAction = emailaction;&#13;
+	const event = {};&#13;
+    &#13;
+	const key = 'intro';&#13;
+	const notifParams = {&#13;
+		'businessService': 'DTIT',&#13;
+        'languageId': 'de',&#13;
+        'paramObj': ''&#13;
+	};&#13;
+&#13;
+	const expectedResult = 'Deutscher Text ' + current.number;&#13;
+&#13;
+	const helper = new LabelService(current, template, email, sysEventEmailAction, event);&#13;
+	const result = helper.process(key, notifParams);&#13;
+&#13;
+	assertEqual({&#13;
+		name: 'LabelService#process()',&#13;
+		value: result,&#13;
+		shouldbe: expectedResult&#13;
+	});&#13;
+&#13;
+})(outputs, steps, params, stepResult, assertEqual);</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+</record_update>

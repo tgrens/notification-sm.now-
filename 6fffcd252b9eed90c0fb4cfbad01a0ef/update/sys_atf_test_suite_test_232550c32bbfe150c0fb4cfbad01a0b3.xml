@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test_suite_test">
+    <sys_atf_test_suite_test action="INSERT_OR_UPDATE">
+        <abort_on_failure>false</abort_on_failure>
+        <order>100</order>
+        <sys_class_name>sys_atf_test_suite_test</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-07 07:15:50</sys_created_on>
+        <sys_id>232550c32bbfe150c0fb4cfbad01a0b3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>434554c32bbfe150c0fb4cfbad01a09a</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_test_suite_test_232550c32bbfe150c0fb4cfbad01a0b3</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-07 07:15:50</sys_updated_on>
+        <test display_value="Notification SM.now - TextFieldTranslator - translateFieldValue()">434554c32bbfe150c0fb4cfbad01a09a</test>
+        <test_suite display_value="Notification SM.now - TextFieldTranslator">7d3590c32bbfe150c0fb4cfbad01a0ca</test_suite>
+    </sys_atf_test_suite_test>
+</record_update>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.HtmlEmailGenerator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Generates a HTML email for the given data.</description>
+        <name>HtmlEmailGenerator</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+
+/**
+ * @class HtmlEmailGenerator
+ * @description Generates a HTML email for the given data.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class HtmlEmailGenerator {
+
+    /**
+     * Generates a HTML Email for the given data.
+     *
+     * @param {JSON} data email content
+
+     * @returns {String} HTML email
+     */
+    writeEmail(data) {
+
+        let mailHeader = this.writeEmailHeader(data);
+        let mailBody = this.writeEmailBody(data);
+        let mailLink = this.writeEmailLink(data);
+        let mailFooter = this.writeEmailFooter(data);
+
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append(mailHeader);
+        builder.append(mailBody);
+        builder.append(mailLink);
+        builder.append(mailFooter);
+
+        return builder.toString();
+    }
+
+    /**
+     * Generates a HTML Email header for the given data.
+     *
+     * @param {JSON} data email content
+
+     * @returns {String} HTML email header
+     */
+    writeEmailHeader(data) {
+        let header = UtilityFunctions.findValue(data, Constants.EMAIL_HEADER);
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('<p>');
+        builder.append(header);
+        builder.append('</p>');
+
+        return builder.toString();
+    }
+
+    /**
+     * Generates a HTML Email body for the given data.
+     *
+     * @param {JSON} data email content
+
+     * @returns {String} HTML email body
+     */
+    writeEmailBody(data) {
+        let emailBody = UtilityFunctions.findValue(data, Constants.EMAIL_BODY);
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('<p>');
+        builder.append(emailBody);
+        builder.append('</p>');
+
+
+        return builder.toString();
+    }
+
+    /**
+     * Generates a HTML link for the given data.
+     *
+     * @param {JSON} data email content
+
+     * @returns {String} HTML email link
+     */
+    writeEmailLink(data) {
+        let emailLink = '';
+        let url = UtilityFunctions.findValue(data, Constants.EMAIL_LINK_URL);
+        let name = UtilityFunctions.findValue(data, Constants.EMAIL_LINK_NAME);
+
+        if(UtilityFunctions.isNotBlank(name)) {
+
+            let builder = new x_dtitg_core_smnow.StringBuilder();
+            builder.append('<p>');
+            builder.append('<a href="');
+            builder.append(url);
+            builder.append('">');
+            builder.append(name);
+            builder.append('</a>');
+            builder.append('</p>');
+
+            emailLink = builder.toString();
+        }
+
+        return emailLink;
+    }
+
+    /**
+     * Generates a HTML Email footer for the given data.
+     *
+     * @param {JSON} data email content
+
+     * @returns {String} HTML email footer
+     */
+    writeEmailFooter(data) {
+        let emailFooter = '';
+        let footer = UtilityFunctions.findValue(data, Constants.EMAIL_FOOTER);
+        if(UtilityFunctions.isNotBlank(footer)) {
+            let builder = new x_dtitg_core_smnow.StringBuilder();
+
+            builder.append('<p>');
+            builder.append(footer);
+            builder.append('</p>');
+
+            emailFooter = builder.toString();
+        }
+
+        return emailFooter;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-17 05:18:31</sys_created_on>
+        <sys_id>df607152753e0a105dcfb1c0bc501000</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>HtmlEmailGenerator</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_df607152753e0a105dcfb1c0bc501000</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-17 10:57:33</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.UtilityFunctions</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Helper function for Notification SM.now</description>
+        <name>UtilityFunctions</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class UtilityFunctions
+ * @description Helper function for Notification SM.now
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class UtilityFunctions {
+
+    /**
+     * Checks for event.parm2
+     *
+     * @param {Object} event GlideRecord - the sysevent that caused this to be invoked.
+     * @returns {Boolean} true/false
+     */
+    static isEventParamTwo(event) {
+        let eventParamTwo = false;
+
+        if (event) {
+            if (event.parm2) {
+                eventParamTwo = true;
+            }
+        }
+
+        gs.debug(`[UtilityFunctions][isEventParamTwo] eventParamTwo => ${ eventParamTwo}`);
+
+        return eventParamTwo;
+    }
+
+    /**
+     * Checks if a given value is an object
+     *
+     * @param {Object} obj value to be checked
+     *
+     * @returns {Boolean} true / false
+     */
+    static isObject(obj) {
+        let isObj = obj && typeof obj === 'object';
+
+        gs.debug(`[UtilityFunctions][isObject] isObj => ${ isObj}`);
+
+        return isObj;
+    }
+
+    /**
+     * Checks for an empty or null object.
+     * Returns true if the object is null or empty.
+     *
+     * @param {Object} obj object to ckeck
+     * @returns {Boolean} true / false
+     */
+    static isObjEmpty(obj) {
+        let isEmpty = !obj || JSON.stringify(obj) === '{}';
+
+        gs.debug(`[UtilityFunctions][isObject] isEmpty => ${ isEmpty}`);
+
+        return isEmpty;
+    }
+
+    /**
+     * Determines the table of the record object
+     *
+     * @param {Object} record GliedRecord object
+     *
+     * @returns {String} table name
+     */
+    static determineTable(record) {
+
+        gs.debug(`[UtilityFunctions][determineTable] record => ${ record }`);
+
+        let table = record.getValue('sys_class_name') ? record.getValue('sys_class_name') : record.getTableName();
+
+
+        gs.debug(`[UtilityFunctions][determineTable] table => ${ table }`);
+
+        return table;
+    }
+
+    /**
+     * Returns true if the given event is a normal event
+     * not "notifification_engine.process" -> is coming out of notifiaction engine OOB when update or insert a record
+     *
+     * @param   {record}  event    event record
+     * @returns {Boolean} true, if normal event
+     */
+    static determineEvent(event) {
+        let isEvent = false;
+        let eventName = event.name ? event.name.toString() : '';
+
+        if (UtilityFunctions.isNotBlank(eventName) && eventName !== Constants.STANDARD_NOTIFICATION_EVENT) {
+            isEvent = true;
+        }
+
+        gs.debug(`[UtilityFunctions][determineEvent] eventName => ${ eventName }, isEvent => ${ isEvent}`);
+
+        return isEvent;
+    }
+
+    /**
+     * Reads the preferred languageId of a recipient from the user preference table
+     *
+     * @param {String} recipient sys_id of the recipient
+     *
+     * @returns {String} languageId
+     */
+    static getPreferredRecipientLanguageId(recipient) {
+        const limit = 1;
+        let languageId = '';
+        let query = QueryBuilder.findUserPreferenceByName(recipient, Constants.USER_LANGUAGE);
+
+        let preference = x_dtitg_core_smnow.GlideRecordUtils.getLimitedGlideRecord(Constants.SYS_USER_PREFERENCE, query, limit);
+        if (preference.next()) {
+            languageId = preference.getValue('value');
+        }
+
+        return languageId;
+    }
+
+    /**
+     * Reads the preferred languageId of a recipient from the user object.
+     *
+     * @param {String} recipient sys_id of the recipient
+     *
+     * @returns {String} languageId
+     */
+    static getRecipientLanguageId(recipient) {
+        let languageId = '';
+        let user = x_dtitg_core_smnow.GlideRecordUtils.getRecord(Constants.SYS_USER, 'sys_id', recipient);
+
+        if (user) {
+            languageId = user.getValue('preferred_language');
+        }
+
+        return languageId;
+    }
+
+    /**
+     * Reads the languageId from the notification configuration
+     *
+     * @param {Object} sysEventEmailAction sysevent_email_action record
+     *
+     * @returns {String} languageId
+     */
+    static getNotifcationLanguageId(sysEventEmailAction) {
+        let config = x_dtitg_core_smnow.GlideRecordUtils
+            .getRecord(Constants.CONFIGURATION, 'notification', sysEventEmailAction.getValue('sys_id'));
+
+        gs.debug(`[UtilityFunctions][getNotifcationLanguageId] config =>${ config }`);
+
+        return config.getValue('language_id');
+    }
+
+    /**
+     * Checks if Array is Empty
+     *
+     * @param   {Array} array array to check
+     * @returns {boolean} true if arry is empty
+     */
+    static isArrayEmpty(array) {
+        return !Array.isArray(array) || !array.length;
+    }
+
+    /**
+     * Returns true if the given item is null, undefined, or evaluates to the empty string.
+     *
+     * @param {String} value the string to be checked
+     * @returns {Boolean} false, if string is not null or not empty
+     */
+    static isBlank(value) {
+        return !value || !value.trim();
+    }
+
+    /**
+     * Returns true if the given item exists and is not empty
+     *
+     * @param   {String} value the string to be checked
+     *  @returns {Boolean} true, if string is null or not empty
+     */
+    static isNotBlank(value) {
+        return !UtilityFunctions.isBlank(value);
+    }
+
+    /**
+     * Method to find a value in an Object
+     *
+     * @param {Object} object javascript object
+     * @param {String} property property name
+     *
+     * @returns {Object} the value of the given object property
+     */
+    static findValue(object, property) {
+        let value = '';
+
+        if(UtilityFunctions.isObject(object)) {
+
+            gs.debug(`[UtilityFunctions][findValue] object ==> ${ JSON.stringify(object)}`);
+            gs.debug(`[UtilityFunctions][findValue] property ==> ${ property}`);
+
+            // eslint-disable-next-line consistent-return
+            Object.keys(object).some((prop) => {
+                if (prop === property) {
+                    value = object[prop];
+                    return true;
+                }
+                if (object[prop] && typeof object[prop] === 'object') {
+                    value = UtilityFunctions.findValue(object[prop], property);
+                    return false;
+                }
+            });
+        }
+        gs.debug(`[UtilityFunctions][findValue] value ==> ${ value}`);
+
+        return value;
+    }
+
+    /**
+     *  Strip the HTML tags from a translated HTML message
+     *
+     *
+     * @param {String} html message
+     * @returns {String}  message without html tags
+     **/
+    static stripHtmlTags(html) {
+        let message = '';
+
+        if (UtilityFunctions.isNotBlank(html)) {
+            message = html.toString();
+            message = message.replace(/<[^>]*>/g, '');
+        }
+
+        gs.debug(`[UtilityFunctions][stripHtmlTags] message => ${ message }`);
+
+        return message;
+    }
+
+    /**
+     * Parse a JSON string.
+     *
+     * @param {String} string JSON string
+     *
+     * @returns {Object} obj javascript object
+     */
+    static parse(string) {
+        let obj = null;
+        try {
+            obj = JSON.parse(string);
+        } catch (ex) {
+            gs.warn(`[UtilityFunctions][parse] Not a valide JSON string ==> ${ ex.message}`);
+        }
+
+        return obj;
+    }
+
+    /**
+     * Finds an object in an array of objects by value of property
+     *
+     * @param {Array} objArray array of objcts
+     * @param {String} property object property
+     * @param {String} value property value
+     *
+     * @returns {Object} obj javascript object
+     */
+    static findObj(objArray, property, value) {
+        let resultObj = {};
+        // eslint-disable-next-line guard-for-in
+        for (const index in objArray) {
+            let obj = objArray[index];
+            if (obj[property] === value) {
+                resultObj = obj;
+            }
+        }
+
+        return resultObj;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-25 12:12:56</sys_created_on>
+        <sys_id>b52dd5af2bdea110c0fb4cfbad01a05f</sys_id>
+        <sys_mod_count>141</sys_mod_count>
+        <sys_name>UtilityFunctions</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_b52dd5af2bdea110c0fb4cfbad01a05f</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-07 08:30:58</sys_updated_on>
+    </sys_script_include>
+</record_update>

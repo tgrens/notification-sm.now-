@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Insert a record into 'sys_translated_text' with the following values:
+Table Name = chg_model
+and Field Name = description
+and Document = {{Step 1: Record Insert.Record}}
+and Language = English
+and Value = t
+Confirm the record was successfully inserted
+
+Warning: Using a system table may cause unexpected behavior for other tests running in parallel&#13;
+See the documentation for Test Design Considerations</description>
+        <display_name>Record Insert</display_name>
+        <inputs/>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>3</order>
+        <step_config display_value="Record Insert">14872288df60220062fe6c7a4df26319</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-07 12:48:39</sys_created_on>
+        <sys_id>1301e1c72bf32550c0fb4cfbad01a0c6</sys_id>
+        <sys_mod_count>16</sys_mod_count>
+        <sys_name>Record Insert</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_1301e1c72bf32550c0fb4cfbad01a0c6</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-07 13:48:46</sys_updated_on>
+        <table>sys_translated_text</table>
+        <test display_value="Notification SM.now - TextFieldTranslator - translateFieldValue()">434554c32bbfe150c0fb4cfbad01a09a</test>
+        <timeout/>
+        <warning_message>Warning: Using a system table may cause unexpected behavior for other tests running in parallel&#13;
+See the documentation for Test Design Considerations</warning_message>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=1301e1c72bf32550c0fb4cfbad01a0c6"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>1301e1c72bf32550c0fb4cfbad01a0c6</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-07 12:48:40</sys_created_on>
+        <sys_id>0181250b2bf32550c0fb4cfbad01a0bb</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-07 13:48:46</sys_updated_on>
+        <value>tablename=chg_model^fieldname=description^documentkey={{step['7060a1c72bf32550c0fb4cfbad01a013'].record_id}}^language=en^value=t&#13;
+^EQ</value>
+        <variable display_value="Field values">dd54cf535320220002c6435723dc34fd</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>1301e1c72bf32550c0fb4cfbad01a0c6</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-07 12:48:40</sys_created_on>
+        <sys_id>4d81250b2bf32550c0fb4cfbad01a0ba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-07 12:48:40</sys_updated_on>
+        <value>sys_translated_text</value>
+        <variable display_value="Table">90144b535320220002c6435723dc3488</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>1301e1c72bf32550c0fb4cfbad01a0c6</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-07 12:48:40</sys_created_on>
+        <sys_id>8981250b2bf32550c0fb4cfbad01a0ba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-07 12:48:40</sys_updated_on>
+        <value>1</value>
+        <variable display_value="Enforce security">e6e3c7535320220002c6435723dc3496</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>1301e1c72bf32550c0fb4cfbad01a0c6</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-07 12:48:40</sys_created_on>
+        <sys_id>c581250b2bf32550c0fb4cfbad01a0ba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-07 12:48:40</sys_updated_on>
+        <value>record_successfully_inserted</value>
+        <variable display_value="Assert type">9024a37f671003007ba405225685efe5</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=1301e1c72bf32550c0fb4cfbad01a0c6"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>enforce_security</field>
+        <id>1301e1c72bf32550c0fb4cfbad01a0c6</id>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-07 12:48:40</sys_created_on>
+        <sys_id>8181250b2bf32550c0fb4cfbad01a0ba</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-07 12:48:40</sys_updated_on>
+        <table>var__m_atf_input_variable_14872288df60220062fe6c7a4df26319</table>
+        <value/>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>field_values</field>
+        <id>1301e1c72bf32550c0fb4cfbad01a0c6</id>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-07 12:48:40</sys_created_on>
+        <sys_id>4581250b2bf32550c0fb4cfbad01a0ba</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-07 13:48:46</sys_updated_on>
+        <table>var__m_atf_input_variable_14872288df60220062fe6c7a4df26319</table>
+        <value>tablename=chg_model^fieldname=description^documentkey={{step['7060a1c72bf32550c0fb4cfbad01a013'].record_id}}^language=en^value=t&#13;
+^EQ</value>
+    </sys_element_mapping>
+</record_update>

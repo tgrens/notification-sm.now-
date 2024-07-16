@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes>Finds User Preference by Name, Returns an encoded query</notes>
+        <order>1</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-16 15:49:48</sys_created_on>
+        <sys_id>64a0ce9c2ba36d50c0fb4cfbad01a02a</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_64a0ce9c2ba36d50c0fb4cfbad01a02a</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-16 15:52:26</sys_updated_on>
+        <table/>
+        <test display_value="Notification SM.now - QueryBuilder - findUserPreferenceByName()">3c20865c2ba36d50c0fb4cfbad01a03b</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=64a0ce9c2ba36d50c0fb4cfbad01a02a"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>64a0ce9c2ba36d50c0fb4cfbad01a02a</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-16 15:49:48</sys_created_on>
+        <sys_id>7d918adc2ba36d50c0fb4cfbad01a068</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-16 15:52:26</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {&#13;
+    // add test script here&#13;
+	const userSysId = '0417d7c52bdd2d10c0fb4cfbad01a056';&#13;
+	const preference = 'user.language';&#13;
+&#13;
+	let query = QueryBuilder.findUserPreferenceByName(userSysId, preference);&#13;
+    assertEqual({&#13;
+        name: 'QueryBuilder#findUserPreferenceByName()',&#13;
+        shouldbe: 'user.sys_id=0417d7c52bdd2d10c0fb4cfbad01a056^name=user.language',&#13;
+        value: query&#13;
+    });&#13;
+&#13;
+&#13;
+})(outputs, steps, params, stepResult, assertEqual);&#13;
+&#13;
+&#13;
+&#13;
+</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>64a0ce9c2ba36d50c0fb4cfbad01a02a</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-16 15:49:48</sys_created_on>
+        <sys_id>b5918adc2ba36d50c0fb4cfbad01a068</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-16 15:49:48</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+</record_update>

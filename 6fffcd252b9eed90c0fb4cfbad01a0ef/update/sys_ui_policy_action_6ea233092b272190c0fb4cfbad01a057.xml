@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_policy_action">
+    <sys_ui_policy_action action="INSERT_OR_UPDATE">
+        <cleared>false</cleared>
+        <disabled>true</disabled>
+        <field>notification.template.email_layout.layout</field>
+        <field_message/>
+        <field_message_type/>
+        <mandatory>ignore</mandatory>
+        <sys_class_name>sys_ui_policy_action</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-19 08:00:54</sys_created_on>
+        <sys_id>6ea233092b272190c0fb4cfbad01a057</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>notification.template.email_layout.layout</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_ui_policy_action_6ea233092b272190c0fb4cfbad01a057</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2023-06-19 08:00:54</sys_updated_on>
+        <table>x_dtitg_notificati_configuration</table>
+        <ui_policy display_value="Email Layout Read Only">7f82bfc52b272190c0fb4cfbad01a003</ui_policy>
+        <value/>
+        <value_action/>
+        <visible>ignore</visible>
+    </sys_ui_policy_action>
+    <sys_translated_text action="delete_multiple" query="documentkey=6ea233092b272190c0fb4cfbad01a057"/>
+</record_update>

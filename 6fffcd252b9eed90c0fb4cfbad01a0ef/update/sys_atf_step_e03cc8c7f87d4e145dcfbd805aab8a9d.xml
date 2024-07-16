@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>7</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-04-30 12:52:37</sys_created_on>
+        <sys_id>e03cc8c7f87d4e145dcfbd805aab8a9d</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_e03cc8c7f87d4e145dcfbd805aab8a9d</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-07 07:40:00</sys_updated_on>
+        <table/>
+        <test display_value="Notification SM.now - AssignmentGroupCondition - _hasEnabledEntries()">583cc4c7f87d4e145dcfbd805aab8a49</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=e03cc8c7f87d4e145dcfbd805aab8a9d"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>e03cc8c7f87d4e145dcfbd805aab8a9d</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-04-30 12:52:37</sys_created_on>
+        <sys_id>603cc8c7f87d4e145dcfbd805aab8a9e</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 12:59:20</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {&#13;
+&#13;
+	let sys_id = '943cc8c7f87d4e145dcfbd805aab8a61';&#13;
+	let gr = new GlideRecord ('sysevent_email_action');&#13;
+	gr.addQuery('sys_id', steps(sys_id).record_id);&#13;
+	gr.query();&#13;
+	gr.next();&#13;
+&#13;
+&#13;
+	const helper = new AssignmentGroupCondition();&#13;
+	const result = helper._hasEnabledEntries(gr);&#13;
+&#13;
+	assertEqual({&#13;
+    name: 'AssignmentGroupCondition#_hasEnabledEntries()',&#13;
+    value: result,&#13;
+	shouldbe: true&#13;
+  });&#13;
+&#13;
+})(outputs, steps, params, stepResult, assertEqual);&#13;
+</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>e03cc8c7f87d4e145dcfbd805aab8a9d</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-04-30 12:52:37</sys_created_on>
+        <sys_id>ac3cc8c7f87d4e145dcfbd805aab8a9d</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 12:52:37</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+</record_update>

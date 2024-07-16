@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_relationship">
+    <sys_relationship action="INSERT_OR_UPDATE">
+        <advanced>false</advanced>
+        <apply_to/>
+        <basic_apply_to>x_dtitg_notificati_configuration</basic_apply_to>
+        <basic_query_from>x_dtitg_notificati_translations</basic_query_from>
+        <insert_callback/>
+        <name>Translations</name>
+        <query_from/>
+        <query_with><![CDATA[(function refineQuery(current, parent) {
+
+	current.addQuery('number', parent.number);
+	current.addQuery('notification', parent.notification);
+
+})(current, parent);]]></query_with>
+        <reference_field/>
+        <related_list/>
+        <simple_reference>false</simple_reference>
+        <sys_class_name>sys_relationship</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-19 08:03:02</sys_created_on>
+        <sys_id>d93aa9612b1221d0c0fb4cfbad01a033</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Translations</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_relationship_d93aa9612b1221d0c0fb4cfbad01a033</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2023-04-19 08:03:02</sys_updated_on>
+    </sys_relationship>
+    <sys_translated_text action="delete_multiple" query="documentkey=d93aa9612b1221d0c0fb4cfbad01a033"/>
+</record_update>

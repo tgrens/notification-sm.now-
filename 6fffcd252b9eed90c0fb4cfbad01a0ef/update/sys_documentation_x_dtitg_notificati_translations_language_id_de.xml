@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="language_id" label="Sprach-ID" language="de" table="x_dtitg_notificati_translations">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>language_id</element>
+            <help/>
+            <hint/>
+            <label>Sprach-ID</label>
+            <language>de</language>
+            <name>x_dtitg_notificati_translations</name>
+            <plural>Sprach-IDs</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin_dbajusova</sys_created_by>
+            <sys_created_on>2023-07-04 14:25:30</sys_created_on>
+            <sys_id>3465584654a6c6105dcf5381d3c834d2</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Sprach-ID</sys_name>
+            <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+            <sys_update_name>sys_documentation_x_dtitg_notificati_translations_language_id_de</sys_update_name>
+            <sys_updated_by>admin_dbajusova</sys_updated_by>
+            <sys_updated_on>2023-07-04 14:25:30</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

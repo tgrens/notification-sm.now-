@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.TranslationObjectBuilder</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Creates a array of translation objects.</description>
+        <name>TranslationObjectBuilder</name>
+        <script><![CDATA[/* eslint-disable prefer-template */
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class TranslationObjectBuilder
+ * @description Creates a array of translation objects.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class TranslationObjectBuilder {
+
+    /**
+     * Creates a array of translation objects.
+     *
+     * @param {String} key points to x_dtitg_notificati_translations.key
+     * @param {String} emailAction sys_id of sysevent_email_action
+     * @param {String} assignmentGroup business service sys_id
+     * @param {String} languageId language id
+     *
+     * @returns {Array} transaltion objects
+     */
+    construct(key, emailAction, assignmentGroup, languageId) {
+        const translationObject = new TranslationObject(key, false);
+        const queries = QueryBuilder.findTranslation(key, emailAction, assignmentGroup, languageId);
+
+        // eslint-disable-next-line guard-for-in
+        for (const query of queries) {
+            const LIMIT = 1;
+
+            gs.debug('[Notification][TranslationObjectBuilder][construct] query ==>' + query);
+            const record = x_dtitg_core_smnow.GlideRecordUtils.getLimitedGlideRecord(Constants.TRANSLATIONS, query, LIMIT);
+
+            if (record.next()) {
+                translationObject.active = Boolean(record.active);
+                translationObject.translated = true;
+                translationObject.languageId = languageId;
+                translationObject.notification = record.notification.toString();
+                translationObject.translation = record.message_html.toString();
+                translationObject.assignmentGroup = record.assignment_group.toString();
+                translationObject.stripHTML = Boolean(record.strip_html);
+
+                break;
+            }
+        }
+
+        gs.debug('[Notification][TranslationObjectBuilder][construct] translationObjs ==>' +
+            JSON.stringify(translationObject));
+
+        return translationObject;
+    }
+
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-15 12:27:42</sys_created_on>
+        <sys_id>4ca900082b2fe950c0fb4cfbad01a06b</sys_id>
+        <sys_mod_count>45</sys_mod_count>
+        <sys_name>TranslationObjectBuilder</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_4ca900082b2fe950c0fb4cfbad01a06b</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-06 07:55:10</sys_updated_on>
+    </sys_script_include>
+</record_update>

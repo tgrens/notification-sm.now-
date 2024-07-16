@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.HtmlTableGenerator</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Generates a HTML Table for the given data.</description>
+        <name>HtmlTableGenerator</name>
+        <script><![CDATA[/* eslint-disable guard-for-in */
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class HtmlTableGenerator
+ * @description Generates a HTML Table for the given data.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class HtmlTableGenerator {
+
+    /**
+     * Generates a HTML Table for the given data.
+     *
+     * @param {String} heading table heading
+     * @param {Object} templateData see TemplateData.js
+     * @returns {String} HTML Table
+     */
+    writeTableWithHeading(heading, templateData) {
+
+        let tableHeading = this.writeTableHheading(heading);
+        let tableHeader = this.writeTableHeader(templateData);
+        let tableBody = this.writeTableBody(templateData);
+        let tableFooter = this.writeTableFooter(templateData);
+
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append(tableHeading);
+        builder.append(tableHeader);
+        builder.append(tableBody);
+        builder.append(tableFooter);
+
+        return builder.toString();
+    }
+
+    /**
+     * Generates a HTML Table heading for the given data.
+     *
+     * @param {String} heading Table heading
+     * @returns {String} HTML Table heading
+     */
+    writeTableHheading(heading) {
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+
+        builder.append('<p>&nbsp;</p>');
+        builder.append('<p>');
+        builder.append(heading);
+        builder.append('</p>');
+
+        return builder.toString();
+    }
+
+    /**
+     * Generates a HTML Table for the given data.
+     *
+     * @param {Object} templateData see TemplateData.js
+     * @returns {String} HTML Table
+     */
+    writeTable(templateData) {
+        let tableHeader = this.writeTableHeader(templateData);
+        let tableBody = this.writeTableBody(templateData);
+        let tableFooter = this.writeTableFooter(templateData);
+
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append(tableHeader);
+        builder.append(tableBody);
+        builder.append(tableFooter);
+
+        return builder.toString();
+    }
+
+    /**
+     * Generates the table header
+     *
+     * @param {Object} templateData see TemplateData.js
+     *
+     * @returns {String} HTML Table header
+     */
+    writeTableHeader(templateData) {
+        const firstRecord = 0;
+        let fields = templateData.getTableRecord(firstRecord).getFieldRecords();
+
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('<table class="email-table">');
+        builder.append('<thead>');
+        builder.append('<tr>');
+
+        for (let field in fields) {
+            builder.append('<th>');
+            builder.append(fields[field].label);
+            builder.append('</th>');
+        }
+
+        builder.append('</tr>');
+        builder.append('</thead>');
+
+        return builder.toString();
+    }
+
+    /**
+     * Generates the table body
+     *
+     * @param {Object} templateData see TemplateData.js
+     *
+     * @returns {String} HTML Table body
+     */
+    writeTableBody(templateData) {
+        let tableRecord = templateData.getTableRecords();
+
+        gs.debug(`[HtmlTableGenerator][writeTableBody] tableRecord => ${ JSON.stringify(tableRecord)}`);
+
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('<tbody>');
+
+        for (let record in tableRecord) {
+            builder.append('<tr>');
+            let fieldRecords = tableRecord[record].fieldRecords;
+            for (let field in fieldRecords) {
+                builder.append('<td>');
+                builder.append(fieldRecords[field].value);
+                builder.append('</td>');
+            }
+            builder.append('</tr>');
+        }
+        builder.append('</tbody>');
+        return builder.toString();
+    }
+
+    /**
+     * Generates the table footer
+     *
+     * @param {Object} templateData see TemplateData.js
+     *
+     * @returns {String} HTML Table footer
+     */
+    writeTableFooter(templateData) {
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('<tfoot>');
+        builder.append('</tfoot>');
+        builder.append('</table>');
+
+        return builder.toString();
+    }
+
+    /**
+     * Generates an HTML a tag for the given parameters
+     *
+     * @param {String} url ticket url
+     * @param {String} ticketNumber ticket number
+     *
+     * @returns {String} HTML a tag
+     */
+    writeTicketUrl(url, ticketNumber) {
+        let builder = new x_dtitg_core_smnow.StringBuilder();
+        builder.append('<a href="');
+        builder.append(url);
+        builder.append('">');
+        builder.append(ticketNumber);
+        builder.append('</a>');
+
+        return builder.toString();
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-07-03 15:05:56</sys_created_on>
+        <sys_id>738a1d7d2bff6d10c0fb4cfbad01a001</sys_id>
+        <sys_mod_count>25</sys_mod_count>
+        <sys_name>HtmlTableGenerator</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_738a1d7d2bff6d10c0fb4cfbad01a001</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-07 10:23:39</sys_updated_on>
+    </sys_script_include>
+</record_update>

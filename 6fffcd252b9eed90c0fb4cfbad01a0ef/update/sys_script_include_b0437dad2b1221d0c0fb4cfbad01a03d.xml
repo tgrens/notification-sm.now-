@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.Constants</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Constants for the APP</description>
+        <name>Constants</name>
+        <script><![CDATA[/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @description Constants for the APP
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+const Constants = {
+
+    DEFAULT_LANGUAGE_ID: 'en',
+    USER_LANGUAGE: 'user.language',
+
+    // Tabels
+    CONFIGURATION: 'x_dtitg_notificati_configuration',
+    EMAIL_FIELDS: 'x_dtitg_notificati_email_fields',
+    TRANSLATIONS: 'x_dtitg_notificati_translations',
+    ENABLED: 'x_dtitg_notificati_enabled',
+    NOTIFICATION: 'sysevent_email_action',
+    INCIDENT: 'incident',
+    PROBLEM: 'problem',
+    CHANGE: 'change_request',
+    NOTIF_TRANSLATION: 'x_dtitg_notificati_translations',
+    SYS_CHOICE: 'sys_choice',
+    SYS_TRANSLATED_TEXT: 'sys_translated_text',
+
+    SYS_USER: 'sys_user',
+    USER_HAS_ROLE: 'sys_user_has_role',
+    SYS_USER_PREFERENCE: 'sys_user_preference',
+    SYS_DICTIONARY: 'sys_dictionary',
+    SYS_DB_OBJECT: 'sys_db_object',
+    SYS_DOCUMENTATION: 'sys_documentation',
+    TABLE_GROUP_MEMBERS: 'sys_user_grmember',
+
+    STANDARD_NOTIFICATION_EVENT: 'notification_engine.process',
+
+    UNKNOW_USER:'temporary_user',
+    SNC_INTERNAL:'7fcaa702933002009c8579b4f47ffbde',
+    ITIL:'282bf1fac6112285017366cb5f867469',
+
+    SUBJECT: 'subject',
+    EMAIL_HEADER: 'email_header',
+    EMAIL_BODY: 'email_body',
+    EMAIL_LINK_URL: 'link_url',
+    EMAIL_LINK_NAME: 'link_name',
+    EMAIL_FOOTER: 'email_footer',
+
+    EMPTY_DATA: 'empty_data',
+    EXCEEDED_DATA: 'exceeded_data',
+    SYSTEMS_EMAIL_WHITELIST: gs.getProperty('x_dtitg_otip_imn.SystemsEmailWhitelist').split(','),
+
+    NAMED_ENTITIES: {
+        '&nbsp;': ' ',
+        '&lt;': '<',
+        '&gt;': '>',
+        '&quot;': '"',
+        '&apos;': '\'',
+        '&amp;': '&',
+        '&Agrave;': 'À',
+        '&agrave;': 'à',
+        '&Aacute;': 'Á',
+        '&aacute;': 'á',
+        '&Acirc;': 'Â',
+        '&acirc;': 'â',
+        '&Atilde;': 'Ã',
+        '&atilde;': 'ã',
+        '&Auml;': 'Ä',
+        '&auml;': 'ä',
+        '&Aring;': 'Å',
+        '&aring;': 'å',
+        '&AElig;': 'Æ',
+        '&aelig;': 'æ',
+        '&Ccedil;': 'Ç',
+        '&ccedil;': 'ç',
+        '&Egrave;': 'È',
+        '&egrave;': 'è',
+        '&Eacute;': 'É',
+        '&eacute;': 'é',
+        '&Ecirc;': 'Ê',
+        '&ecirc;': 'ê',
+        '&Euml;': 'Ë',
+        '&euml;': 'ë',
+        '&Igrave;': 'Ì',
+        '&igrave;': 'ì',
+        '&Iacute;': 'Í',
+        '&iacute;': 'í',
+        '&Icirc;': 'Î',
+        '&icirc;': 'î',
+        '&Iuml;': 'Ï',
+        '&iuml;': 'ï',
+        '&ETH;': 'Ð',
+        '&eth;': 'ð',
+        '&Ntilde;': 'Ñ',
+        'ntilde;': 'ñ',
+        '&Ograve;': 'Ò',
+        '&ograve;': 'ò',
+        '&Oacute;': 'Ó',
+        '&oacute;': 'ó',
+        '&Ocirc;': 'Ô',
+        '&ocirc;': 'ô',
+        '&Otilde;': 'Õ',
+        '&otilde;': 'õ',
+        '&Ouml;': 'Ö',
+        '&ouml;': 'ö',
+        '&Oslash;': 'Ø',
+        '&oslash;': 'ø',
+        '&Ugrave;': 'Ù',
+        '&ugrave;': 'ù',
+        '&Uacute;': 'Ú',
+        '&uacute;': 'ú',
+        '&Ucirc;': 'Û',
+        '&ucirc;': 'û',
+        '&Uuml;': 'Ü',
+        '&uuml;': 'ü',
+        '&Yacute;': 'Ý',
+        '&yacute;': 'ý',
+        '&yuml;': 'ÿ',
+        '&szlig;': 'ß'
+    },
+
+    INTERNAL_TYPES: {
+        STRING: 'string',
+        INTEGER: 'integer',
+        CHOICE: 'choice',
+        TRANSLATED_TEXT: 'translated_text',
+        TRANSLATED_HTML: 'translated_html',
+        REFERENCE: 'reference'
+    }
+
+};
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-19 08:41:25</sys_created_on>
+        <sys_id>b0437dad2b1221d0c0fb4cfbad01a03d</sys_id>
+        <sys_mod_count>54</sys_mod_count>
+        <sys_name>Constants</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_b0437dad2b1221d0c0fb4cfbad01a03d</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-17 06:04:16</sys_updated_on>
+    </sys_script_include>
+</record_update>

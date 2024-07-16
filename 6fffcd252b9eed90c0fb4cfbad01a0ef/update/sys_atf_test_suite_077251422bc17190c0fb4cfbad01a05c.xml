@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test_suite">
+    <sys_atf_test_suite action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <input_filter/>
+        <name>Notification SM.now - TableRecord</name>
+        <parent display_value="Notification SM.now - Unit-Tests">2f8e0be42b5fad10c0fb4cfbad01a04d</parent>
+        <sn_atf_tg_generated>false</sn_atf_tg_generated>
+        <sys_class_name>sys_atf_test_suite</sys_class_name>
+        <sys_created_by>admin_dbajusova</sys_created_by>
+        <sys_created_on>2023-09-04 12:28:03</sys_created_on>
+        <sys_id>077251422bc17190c0fb4cfbad01a05c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Notification SM.now - TableRecord</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_test_suite_077251422bc17190c0fb4cfbad01a05c</sys_update_name>
+        <sys_updated_by>admin_dbajusova</sys_updated_by>
+        <sys_updated_on>2023-09-04 12:28:03</sys_updated_on>
+    </sys_atf_test_suite>
+</record_update>

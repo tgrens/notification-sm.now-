@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <application display_value="Notification SM.now">409999612bdeed90c0fb4cfbad01a068</application>
+        <assessment/>
+        <device_type/>
+        <filter table="sys_atf_test_suite_test">sys_scope=6fffcd252b9eed90c0fb4cfbad01a0ef^test_suite.parent=2f8e0be42b5fad10c0fb4cfbad01a04d^EQ<item display_table="sys_scope" display_value="Notification SM.now WORK IN PROGRESS" endquery="false" field="sys_scope" goto="false" newquery="false" operator="=" or="false" value="6fffcd252b9eed90c0fb4cfbad01a0ef"/>
+            <item display_table="sys_atf_test_suite" display_value="Notification SM.now - Unit-Tests" endquery="false" field="test_suite.parent" goto="false" newquery="false" operator="=" or="false" value="2f8e0be42b5fad10c0fb4cfbad01a04d"/>
+            <item endquery="true" field="" goto="false" newquery="false" operator="=" or="false" value=""/>
+        </filter>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>Test Suite Tests</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>sys_atf_test_suite_test</name>
+        <order>20400</order>
+        <override_menu_roles>false</override_menu_roles>
+        <query>sysparm_view_forced=true</query>
+        <report/>
+        <require_confirmation>false</require_confirmation>
+        <roles>admin</roles>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-05 09:46:54</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>9ca484fc2b13ed10c0fb4cfbad01a062</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Unit-Tests</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_app_module_9ca484fc2b13ed10c0fb4cfbad01a062</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2023-06-06 06:30:42</sys_updated_on>
+        <timeline_page/>
+        <title>Unit-Tests</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+</record_update>

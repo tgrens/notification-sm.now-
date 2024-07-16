@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.AppInstall</api_name>
+        <caller_access>1</caller_access>
+        <client_callable>false</client_callable>
+        <description>This script installs Notification SM.now.</description>
+        <name>AppInstall</name>
+        <script><![CDATA[/**
+ * @description This script installs Notification SM.now.
+ * @since 09/08/2023
+ * @date  09/12/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+function AppInstall() {
+    var installer = new x_snc_devtools.InstallerAPI(x_snc_devtools.GetAppName('x_dtitg_notificati'));
+
+    new x_dtitg_notificati.AppInstallSetEmailScript().installScript(installer);
+    new x_dtitg_notificati.AppInstallDeactivateNotifcations().deactivateIncidentNotifications(installer);
+    new x_dtitg_notificati.AppInstallDeactivateNotifcations().deactivateProblemNotifications(installer);
+
+    installer.SetProperty('sn_ex_emp_fd.ex.email.redirection.portal.sysId', '89ba24fa2bcfe510c0fb4cfbad01a070');
+
+    //[SMNOW-1281] - Capturing configurations for Incident commented notifications
+    installer.RecordTransporterPackageUnpack('x_dtitg_notificati.notif_configuration');
+    installer.RecordTransporterPackageUnpack('x_dtitg_notificati.notif_trans_affected');
+
+    //[SMNOW-975] - Email notifications
+    installer.RecordTransporterPackageUnpack('x_dtitg_notificati.email_footer_transla');
+	//[SMNOW-1637] - Feature: Email Notifaction
+    installer.RecordTransporterPackageUnpack('x_dtitg_notificati.pm_email_trans');
+	installer.RecordTransporterPackageUnpack('x_dtitg_notificati.pm_email_conf');
+
+    return installer.Finish();
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-09-08 11:42:07</sys_created_on>
+        <sys_id>492eedd72b493990c0fb4cfbad01a01c</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>AppInstall</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_492eedd72b493990c0fb4cfbad01a01c</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-21 11:15:02</sys_updated_on>
+    </sys_script_include>
+</record_update>

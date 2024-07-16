@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes>Expected Result: Exceeded Data</notes>
+        <order>4</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-17 11:21:05</sys_created_on>
+        <sys_id>814d2cde2b487510c0fb4cfbad01a0c8</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_814d2cde2b487510c0fb4cfbad01a0c8</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-09-27 15:04:36</sys_updated_on>
+        <table/>
+        <test display_value="Notification SM.now - HTMLTableService - process()">15eaab062b447510c0fb4cfbad01a081</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=814d2cde2b487510c0fb4cfbad01a0c8"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>814d2cde2b487510c0fb4cfbad01a0c8</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-17 11:21:05</sys_created_on>
+        <sys_id>7f5decde2b487510c0fb4cfbad01a0f0</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-09-27 15:00:39</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {&#13;
+&#13;
+    let gr = new GlideRecord('sysevent_email_action');&#13;
+    gr.addQuery('sys_id', steps('6cdcec9e2b487510c0fb4cfbad01a091').record_id);&#13;
+    gr.query();&#13;
+    gr.next();&#13;
+&#13;
+    let incident = new GlideRecord('incident');&#13;
+    incident.newRecord();&#13;
+	incident.setValue('short_description', 'x1x2x3 Some Text ATF y1y2y3');&#13;
+&#13;
+    const _current = incident;&#13;
+    const _template = {&#13;
+        v: '',&#13;
+        print: function(value) {&#13;
+            gs.info('[template][print] value ==&gt; ' + value);&#13;
+            v = value;&#13;
+            return value.toString();&#13;
+        }&#13;
+    };&#13;
+    const notifParams = {&#13;
+        languageId: 'de',&#13;
+        name: 'Test Notif',&#13;
+        businessService: 'DT IT',&#13;
+        paramObj: {&#13;
+            key: 'intro'&#13;
+        }&#13;
+    };&#13;
+&#13;
+    const _sysEventEmailAction = gr;&#13;
+    const _email = {};&#13;
+    const _event = {&#13;
+        parm2: ' {"Test Notif": {"tableName": "incident", "maxRowCount": "1", "fieldList": "short_description,state", "query": "numberSTARTSWITHI"}}'&#13;
+    }; &#13;
+&#13;
+    const helper = new HTMLTableService(_current, _template, _email, _sysEventEmailAction, _event);&#13;
+    const result = helper.process(notifParams);&#13;
+&#13;
+    assertEqual({&#13;
+        name: 'HTMLTableService#process',&#13;
+        value: v,&#13;
+        shouldbe: '&lt;p&gt;There is more data available.&lt;/p&gt;'&#13;
+    });&#13;
+&#13;
+})(outputs, steps, params, stepResult, assertEqual);</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>814d2cde2b487510c0fb4cfbad01a0c8</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-17 11:21:05</sys_created_on>
+        <sys_id>bb5decde2b487510c0fb4cfbad01a0f0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-17 11:21:05</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+</record_update>

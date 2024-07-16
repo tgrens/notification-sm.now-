@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes>Expected result: Reference</notes>
+        <order>3</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_dbajusova</sys_created_by>
+        <sys_created_on>2023-07-07 06:39:25</sys_created_on>
+        <sys_id>93dccc072b7fe150c0fb4cfbad01a064</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_93dccc072b7fe150c0fb4cfbad01a064</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-10-23 15:18:14</sys_updated_on>
+        <table/>
+        <test display_value="Notification SM.now - GlideRecordUtils - getInternalType()">5d8eaba22b3ba150c0fb4cfbad01a0c4</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=93dccc072b7fe150c0fb4cfbad01a064"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>93dccc072b7fe150c0fb4cfbad01a064</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_dbajusova</sys_created_by>
+        <sys_created_on>2023-07-07 06:39:25</sys_created_on>
+        <sys_id>4c0d04472b7fe150c0fb4cfbad01a0e2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_dbajusova</sys_updated_by>
+        <sys_updated_on>2023-07-07 06:39:25</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>93dccc072b7fe150c0fb4cfbad01a064</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_dbajusova</sys_created_by>
+        <sys_created_on>2023-07-07 06:39:25</sys_created_on>
+        <sys_id>840d04472b7fe150c0fb4cfbad01a0e3</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-10-23 15:18:14</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {&#13;
+	&#13;
+    let incident = new GlideRecord ('incident');&#13;
+	incident.newRecord();&#13;
+&#13;
+	const record = incident;&#13;
+	const field = 'assigned_to';&#13;
+&#13;
+	&#13;
+	const result = GlideRecordUtils.getInternalType(record,field);&#13;
+	&#13;
+	assertEqual ({&#13;
+		name: 'GlideRecordUtils#getInternalType()',&#13;
+		value: result,&#13;
+		shouldbe: 'reference'&#13;
+	});&#13;
+&#13;
+&#13;
+})(outputs, steps, params, stepResult, assertEqual);&#13;
+// uncomment the next line to execute this script as a jasmine test&#13;
+//jasmine.getEnv().execute();&#13;
+</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+</record_update>

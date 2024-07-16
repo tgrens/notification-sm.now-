@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_message">
+    <sys_ui_message action="INSERT_OR_UPDATE">
+        <application/>
+        <code/>
+        <commented_message/>
+        <key>Configuration already exists</key>
+        <language>de</language>
+        <message>Konfiguration ist bereits vorhanden</message>
+        <sys_class_name>sys_ui_message</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-25 07:44:59</sys_created_on>
+        <sys_id>79dfdcef2b5aa110c0fb4cfbad01a022</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Configuration already exists</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_ui_message_79dfdcef2b5aa110c0fb4cfbad01a022</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2023-04-25 07:44:59</sys_updated_on>
+    </sys_ui_message>
+</record_update>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.MessageHandler</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Retrieves translated messages from the Message [x_dtitg_notificati_translations] table to display in a email.</description>
+        <name>MessageHandler</name>
+        <script><![CDATA[/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class MessageHandler
+ * @description Retrieves translated messages from the Message [x_dtitg_notificati_translations] table to display in a email.
+ * @since 19/06/2024
+ * @date  19/06/2024
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class MessageHandler {
+
+    /**
+     * Retrieves translated messages from the Message [x_dtitg_notificati_translations] table to display in a email.
+     * 
+     * Example:
+     * var my_message = "Abort adding action '{0}', same subflow can't be added twice in {1} subflow.";
+     * var replacements = ['test1', 'test2'];
+     *
+     * var formater = new MessageFormat();
+     * formater.format(my_message, replacements);
+     * 
+     * result ==> Abort adding action 'test1', same subflow can't be added twice in test2 subflow.
+     * 
+     * 
+     * @param {String} message message key
+     * @param {String} languageId language id
+     * @param {Array} replacements Array of strings or values that replace the variables within the specified message.
+     * 
+     * @returns {String} translated and formatted message
+     */
+    getMessage(key, languageId, replacements) {
+        let translationObj = new TranslationObjectBuilder().construct(key, null, null, languageId);
+        let translation = translationObj.getTranslation();
+        translation = TranslationDecoder.stripHtml(translationObj, translation);
+
+        if(translationObj.isTranslated()) {
+            let formatter = new MessageFormat();
+            translation = formatter.format(translation, replacements)
+        }
+
+        return translation;
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-19 11:51:14</sys_created_on>
+        <sys_id>178d59cb75f202505dcfb1c0bc50105d</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>MessageHandler</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_178d59cb75f202505dcfb1c0bc50105d</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-20 06:28:36</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>1</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-06 14:49:29</sys_created_on>
+        <sys_id>8152f4362bbfa150c0fb4cfbad01a059</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_8152f4362bbfa150c0fb4cfbad01a059</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-02 06:39:23</sys_updated_on>
+        <table/>
+        <test display_value="Notification SM.now - QueryBuilder - findTranslation()">3c22b0362bbfa150c0fb4cfbad01a06f</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=8152f4362bbfa150c0fb4cfbad01a059"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>8152f4362bbfa150c0fb4cfbad01a059</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-06 14:49:29</sys_created_on>
+        <sys_id>9593f8762bbfa150c0fb4cfbad01a020</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-06 14:49:29</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>8152f4362bbfa150c0fb4cfbad01a059</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-06 14:49:29</sys_created_on>
+        <sys_id>9d93f8762bbfa150c0fb4cfbad01a020</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-02 06:39:23</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {&#13;
+    &#13;
+	const key = 'subject';&#13;
+	const notification = '1b94cb042b3ba510c0fb4cfbad01a0a5';&#13;
+	const assignmentGroup = '5d59f7462beb2590c0fb4cfbad01a024';&#13;
+	const languageId = 'de';&#13;
+	&#13;
+	const result = QueryBuilder.findTranslation(key, notification, assignmentGroup, languageId);&#13;
+	const resultString = Array.from(result).join(' ').toString();&#13;
+	assertEqual({&#13;
+		name: 'QueryBuilder#findTranslation()',&#13;
+		value: resultString,&#13;
+		shouldbe: 'active=true^key=subject^notification=1b94cb042b3ba510c0fb4cfbad01a0a5^assignment_groupLIKE5d59f7462beb2590c0fb4cfbad01a024^language_id=de active=true^key=subject^notification=1b94cb042b3ba510c0fb4cfbad01a0a5^assignment_groupLIKE5d59f7462beb2590c0fb4cfbad01a024^language_id=en active=true^key=subject^notification=1b94cb042b3ba510c0fb4cfbad01a0a5^assignment_groupISEMPTY^language_id=de active=true^key=subject^notification=1b94cb042b3ba510c0fb4cfbad01a0a5^assignment_groupISEMPTY^language_id=en active=true^key=subject^notificationISEMPTY^assignment_groupLIKE5d59f7462beb2590c0fb4cfbad01a024^language_id=de active=true^key=subject^notificationISEMPTY^assignment_groupLIKE5d59f7462beb2590c0fb4cfbad01a024^language_id=en active=true^key=subject^notificationISEMPTY^assignment_groupISEMPTY^language_id=de active=true^key=subject^notificationISEMPTY^assignment_groupISEMPTY^language_id=en' 		&#13;
+		});&#13;
+&#13;
+})(outputs, steps, params, stepResult, assertEqual);</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+</record_update>

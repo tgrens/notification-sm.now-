@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.AppInstallDeactivateNotifcations</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Dectivates OOTB Notifications</description>
+        <name>AppInstallDeactivateNotifcations</name>
+        <script><![CDATA[/**
+ * @class AppInstallDeactivateNotifcations
+ * @description Dectivates OOTB Notifications
+ * @since 21/06/2024
+ * @date  21/06/2024
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class AppInstallDeactivateNotifcations {
+
+
+    deactivateIncidentNotifications (installer) {
+        // SMNOW-660 Enabler: Setup Notifications (disable ootb incident notifications)
+        var grNotifications = new GlideRecord('sysevent_email_action');
+        grNotifications.addEncodedQuery('sys_scope=global^collection=incident^active=true');
+        grNotifications.query();
+        while (grNotifications.next()) {
+            installer.RecordSetValue('Deactivate notification', 'sysevent_email_action', grNotifications.sys_id.toString(), 'active', false);
+        }
+    }
+
+
+    deactivateProblemNotifications (installer) {
+        // SMNOW-1637 Enabler: Feature: Email Notifaction (disable ootb problem / problem_task notifications)
+        var grNotifications = new GlideRecord('sysevent_email_action');
+        grNotifications.addEncodedQuery('sys_scope=global^collection=problem^ORcollection=problem_task^active=true');
+        grNotifications.query();
+        while (grNotifications.next()) {
+            installer.RecordSetValue('Deactivate notification', 'sysevent_email_action', grNotifications.sys_id.toString(), 'active', false);
+        }
+    }
+
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-21 09:35:38</sys_created_on>
+        <sys_id>43415feb75f206505dcfb1c0bc50104c</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>AppInstallDeactivateNotifcations</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_43415feb75f206505dcfb1c0bc50104c</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-21 09:50:33</sys_updated_on>
+    </sys_script_include>
+</record_update>

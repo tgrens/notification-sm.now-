@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.OptionSchemaReader</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Read an options schema for a notification.</description>
+        <name>OptionSchemaReader</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class OptionSchemaReader
+ * @description Read an options schema for a notification.
+ * @since 13/06/2024
+ * @date  13/06/2024
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class OptionSchemaReader {
+
+    /**
+     * Finds an object in an array of objects by value of property
+     *
+     * @param {String} tag email tag name
+     * @param {Object} sysEventEmailAction  GlideRecord for the email notification (null when called from Client Template)
+     *
+     * @returns {Object} obj javascript object
+     */
+    readOptions(tag, sysEventEmailAction) {
+        const LIMIT = 1;
+        let options = {};
+        const query = QueryBuilder.findEntries('notification', sysEventEmailAction.sys_id);
+        let record = x_dtitg_core_smnow.GlideRecordUtils.getLimitedGlideRecord(Constants.CONFIGURATION, query, LIMIT);
+
+        if(record.next()) {
+            let optionSchema = UtilityFunctions.parse(record.getValue('option_schema'));
+            options = UtilityFunctions.findObj(optionSchema, 'tag', tag);
+        }
+
+        return options;
+    }
+
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-07 07:48:42</sys_created_on>
+        <sys_id>d692ba03f56a86105dcf91c2a9019e14</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>OptionSchemaReader</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_d692ba03f56a86105dcf91c2a9019e14</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-13 07:07:50</sys_updated_on>
+    </sys_script_include>
+</record_update>

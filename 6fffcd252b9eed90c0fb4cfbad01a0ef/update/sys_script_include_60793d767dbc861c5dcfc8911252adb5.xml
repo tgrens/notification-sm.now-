@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.RequesterLink</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the notification(URL of a ticket) to be sent for incident ticket.</description>
+        <name>RequesterLink</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/**
+ * @class RequesterLink
+ * @description Determines the notification to be sent for incident ticket.
+ * @since 11/03/2024
+ * @date  11/03/2024
+ * @version 1.0.0
+ * @author Siddhant Salunkhe E-Mail: <siddhant.salunkhe@t-systems.com>
+ *
+ */
+class RequesterLink extends LinkGenerator {
+
+    /**
+     * Generate the ticket link
+     *
+	 * @param {Object} notifParams see email.engine.js
+	 * @param {Object} currObj Current GlideRecord Object
+     * @returns {String} ticket link (ESC Link)
+     *
+     */
+    createTicketURL(notifParams, currObj) {
+
+        let link = '';
+        if(this._isRequester(notifParams)) {
+            gs.debug(`[RequesterLink] currObj ==> ${(currObj)}`);
+            let tableName = UtilityFunctions.determineTable(currObj);
+            let portalSuffix = new sn_ex_emp_fd.FoundationNotificationUtil().getPortalSuffix();
+            link = `/${ portalSuffix }?id=ticket&table=${ tableName }&sys_id=${ currObj.sys_id.toString()}`;
+        }
+
+        return encodeURI(link);
+    }
+
+
+    // eslint-disable-next-line require-jsdoc
+    _isRequester(notifParams) {
+        let requester = false;
+        const LIMIT = 1;
+        const roleCountQuery = QueryBuilder.findRoleCount(notifParams.recipients);
+
+        gs.debug(`[RequesterLink][_isRequester] roleQuery => ${ roleCountQuery}`);
+
+        const rolesCount = x_dtitg_core_smnow.GlideRecordUtils.getRowCount(Constants.USER_HAS_ROLE, roleCountQuery);
+
+        gs.debug(`[RequesterLink][_isRequester] rolesCount => ${ rolesCount}`);
+
+        // eslint-disable-next-line eqeqeq
+        if(rolesCount == LIMIT) {
+            // let isInternalUser = x_dtitg_core_smnow.UserManagementUtils.hasRole(notifParams.recipients, "snc_internal");
+            const roleQuery = QueryBuilder.findRole(notifParams.recipients, Constants.SNC_INTERNAL);
+
+            gs.debug(`[RequesterLink][_isRequester] roleQuery => ${ roleQuery}`);
+
+            let isInternalUser = x_dtitg_core_smnow.GlideRecordUtils.getLimitedGlideRecord('sys_user_has_role', roleQuery, LIMIT);
+            if (isInternalUser.next()) {
+                requester = true;
+            }
+        }
+
+        return requester;
+    }
+
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-03-11 09:09:36</sys_created_on>
+        <sys_id>60793d767dbc861c5dcfc8911252adb5</sys_id>
+        <sys_mod_count>47</sys_mod_count>
+        <sys_name>RequesterLink</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_60793d767dbc861c5dcfc8911252adb5</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 11:41:49</sys_updated_on>
+    </sys_script_include>
+</record_update>

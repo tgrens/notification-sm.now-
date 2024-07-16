@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.RecipientCollectorProcessor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Collects the email recipients.</description>
+        <name>RecipientCollectorProcessor</name>
+        <script><![CDATA[/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class RecipientCollectorProcessor
+ * @description Collects the email recipients.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class RecipientCollectorProcessor {
+
+    /**
+     * Function that collects the email recipients.
+     *
+     * @param {Object} current GlideRecord object for the ticket record
+     * @param {Object} sysEventEmailAction GlideRecord object for the email notification (sysevent_email_action).
+     * @param {Object} event GlideRecord object for the event that fired the notification (sysevent).
+     *
+     * @returns {Array} recipientList
+     */
+    collectRecipient(current, sysEventEmailAction, event) {
+        let recipientList = [];
+
+        let userRecipients = new UserRecipients().determineRecipient(current, sysEventEmailAction, event);
+        let fieldRecipients = new FieldRecipients().determineRecipient(current, sysEventEmailAction, event);
+        let groupRecipients = new GroupRecipients().determineRecipient(current, sysEventEmailAction, event);
+        let eventRecipients = new EventRecipients().determineRecipient(current, sysEventEmailAction, event);
+        recipientList = recipientList.concat(userRecipients, fieldRecipients, groupRecipients, eventRecipients);
+
+        return recipientList;
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-05-22 11:52:03</sys_created_on>
+        <sys_id>c86b181c2bc7e910c0fb4cfbad01a013</sys_id>
+        <sys_mod_count>32</sys_mod_count>
+        <sys_name>RecipientCollectorProcessor</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_c86b181c2bc7e910c0fb4cfbad01a013</sys_update_name>
+        <sys_updated_by>admin_tonguyen</sys_updated_by>
+        <sys_updated_on>2023-09-16 05:00:55</sys_updated_on>
+    </sys_script_include>
+</record_update>

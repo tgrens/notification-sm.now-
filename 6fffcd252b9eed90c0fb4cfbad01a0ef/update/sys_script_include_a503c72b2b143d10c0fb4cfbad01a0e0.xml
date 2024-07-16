@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.CommentsService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the translation for a given label key</description>
+        <name>CommentsService</name>
+        <script><![CDATA[/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/**
+ * @class CommentsService
+ * @description Determines the translation for a given label key
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class CommentsService extends ContentService {
+
+
+    /**
+     * Determines the translation for a given label key
+     *
+     * @param {Object} notifParams see email.engine.js
+     */
+    process(notifParams) {
+        gs.debug(`[TicketLinkService] notifParams ==> ${ JSON.stringify(notifParams)}`);
+
+        // eslint-disable-next-line no-underscore-dangle
+        let content = this._getComment();
+        if (content) {
+            // eslint-disable-next-line no-underscore-dangle
+            let incidentNumber = this._getNumber();
+            this.template.print(`${gs.getMessage('incident_commented') } ${incidentNumber}: <br/><br/> ${content} <br/><br/`);
+        }
+    }
+
+    /**
+     * Generates the template content
+     *
+     *
+     * @returns {String} latest comment
+     */
+    _getComment() {
+        let content = this.current.comments.getJournalEntry(1);
+        return content;
+    }
+
+    /**
+     * Generates the template content
+     *
+     *
+     * @returns {String} incident number
+     */
+    _getNumber() {
+        let content = this.current.number;
+        return content;
+    }
+
+
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-08-03 05:44:06</sys_created_on>
+        <sys_id>a503c72b2b143d10c0fb4cfbad01a0e0</sys_id>
+        <sys_mod_count>24</sys_mod_count>
+        <sys_name>CommentsService</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_a503c72b2b143d10c0fb4cfbad01a0e0</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-13 05:21:32</sys_updated_on>
+    </sys_script_include>
+</record_update>

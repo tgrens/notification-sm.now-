@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Insert a record into 'x_dtitg_notificati_translations' with the following values:
+Key = __ATF-3Q990KS8GCYYEEN67YY8XZ7IHN1MKE
+and Language = English
+and Strip HTML = true
+and Message HTML = Abort adding action '{0}', same subflow can't be added twice in '{1}' subflow.
+Confirm the record was successfully inserted</description>
+        <display_name>Record Insert</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>1</order>
+        <step_config display_value="Record Insert">14872288df60220062fe6c7a4df26319</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-20 06:02:20</sys_created_on>
+        <sys_id>07c6959b18f646105dcfb43b3fe2bb55</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Record Insert</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_07c6959b18f646105dcfb43b3fe2bb55</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-20 06:02:20</sys_updated_on>
+        <table>x_dtitg_notificati_translations</table>
+        <test display_value="Notification SM.now - MessageHandler - getMessage()">8fa69d5b18f646105dcfb43b3fe2bb47</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=07c6959b18f646105dcfb43b3fe2bb55"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>07c6959b18f646105dcfb43b3fe2bb55</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-20 06:02:20</sys_created_on>
+        <sys_id>335711db18f646105dcfb43b3fe2bbe6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-20 06:02:20</sys_updated_on>
+        <value>x_dtitg_notificati_translations</value>
+        <variable display_value="Table">90144b535320220002c6435723dc3488</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>07c6959b18f646105dcfb43b3fe2bb55</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-20 06:02:20</sys_created_on>
+        <sys_id>375711db18f646105dcfb43b3fe2bbe5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-20 06:02:20</sys_updated_on>
+        <value>record_successfully_inserted</value>
+        <variable display_value="Assert type">9024a37f671003007ba405225685efe5</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>07c6959b18f646105dcfb43b3fe2bb55</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-20 06:02:20</sys_created_on>
+        <sys_id>7f5711db18f646105dcfb43b3fe2bbe5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-20 06:02:20</sys_updated_on>
+        <value>1</value>
+        <variable display_value="Enforce security">e6e3c7535320220002c6435723dc3496</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>07c6959b18f646105dcfb43b3fe2bb55</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-20 06:02:20</sys_created_on>
+        <sys_id>f35711db18f646105dcfb43b3fe2bbe6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-20 06:02:20</sys_updated_on>
+        <value>key=__ATF-3Q990KS8GCYYEEN67YY8XZ7IHN1MKE^language=914493a30f320010e96b0e4fef767e90^strip_html=true^message_html=Abort adding action '{0}', same subflow can't be added twice in '{1}' subflow.^EQ</value>
+        <variable display_value="Field values">dd54cf535320220002c6435723dc34fd</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_14872288df60220062fe6c7a4df26319^id=07c6959b18f646105dcfb43b3fe2bb55"/>
+</record_update>

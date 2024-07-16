@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>true</action_delete>
+        <action_insert>false</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_dtitg_notificati_configuration</collection>
+        <condition/>
+        <description>Deletes all configuration-related records.</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Delete Configuration</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+(function executeRule(current, previous /* null when async */) {
+    let number = current.getValue('number');
+    let query = QueryBuilder.findEntries('number', number);
+
+    x_dtitg_core_smnow.GlideRecordUtils.deleteRecord(Constants.ENABLED, query, false);
+    x_dtitg_core_smnow.GlideRecordUtils.deleteRecord(Constants.EMAIL_FIELDS, query, false);
+    x_dtitg_core_smnow.GlideRecordUtils.deleteRecord(Constants.TRANSLATIONS, query, false);
+
+    let message = gs.getMessage('Configuration deleted');
+    gs.addInfoMessage(message);
+}(current, previous));
+]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-19 08:36:40</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>26c1356d2b1221d0c0fb4cfbad01a01c</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>Delete Configuration</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_26c1356d2b1221d0c0fb4cfbad01a01c</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2023-06-19 13:16:06</sys_updated_on>
+        <template/>
+        <when>after</when>
+        <x_snc_datasilos_created>false</x_snc_datasilos_created>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=26c1356d2b1221d0c0fb4cfbad01a01c"/>
+</record_update>

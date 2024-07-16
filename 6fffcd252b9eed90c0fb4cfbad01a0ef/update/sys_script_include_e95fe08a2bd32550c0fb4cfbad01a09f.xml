@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.LabelService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the translation for a given label key</description>
+        <name>LabelService</name>
+        <script><![CDATA[/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class LabelService
+ * @description Determines the translation for a given label key
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class LabelService extends ContentService {
+
+    /**
+    * Determines the translation for a given label key
+    *
+    * @param {String} key points to x_dtitg_notificati_translations.key
+    * @param {Object} notifParams global object: see email.engine.js
+    *
+    * var notifParams = {
+        'businessService': '',
+        'recipients': '',
+        'languageId': '',
+        'paramObj': '';
+      };
+    *
+    *
+    * @returns {String} translation the translated label
+    */
+    process(key, notifParams) {
+
+        gs.debug(`[LabelService] key ==> ${ key}`);
+        gs.debug(`[LabelService] notifParams ==> ${ JSON.stringify(notifParams)}`);
+        let languageId = this.getLanguageId(notifParams);
+        let assignmentGroup = this.getParameter(notifParams, 'assignmentGroup');
+
+        let emailAction = this.sysEventEmailAction.getValue('sys_id');
+        let translationObj = new TranslationObjectBuilder().construct(key, emailAction, assignmentGroup, languageId);
+        let translation = new TranslationProcessor().process(translationObj);
+
+        gs.debug(`[LabelService] translation ==> ${ translation}`);
+
+        if (this.current) {
+            translation = new GlideElementDecoder().decode(this.current, translation, languageId);
+        }
+
+        return translation;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-09 10:04:11</sys_created_on>
+        <sys_id>e95fe08a2bd32550c0fb4cfbad01a09f</sys_id>
+        <sys_mod_count>63</sys_mod_count>
+        <sys_name>LabelService</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_e95fe08a2bd32550c0fb4cfbad01a09f</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-29 08:31:26</sys_updated_on>
+    </sys_script_include>
+</record_update>

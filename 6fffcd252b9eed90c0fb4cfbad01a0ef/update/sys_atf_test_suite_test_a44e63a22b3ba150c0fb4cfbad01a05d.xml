@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test_suite_test">
+    <sys_atf_test_suite_test action="INSERT_OR_UPDATE">
+        <abort_on_failure>false</abort_on_failure>
+        <order>300</order>
+        <sys_class_name>sys_atf_test_suite_test</sys_class_name>
+        <sys_created_by>admin_dbajusova</sys_created_by>
+        <sys_created_on>2023-07-06 09:48:54</sys_created_on>
+        <sys_id>a44e63a22b3ba150c0fb4cfbad01a05d</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>5d8eaba22b3ba150c0fb4cfbad01a0c4</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_test_suite_test_a44e63a22b3ba150c0fb4cfbad01a05d</sys_update_name>
+        <sys_updated_by>admin_dbajusova</sys_updated_by>
+        <sys_updated_on>2023-07-07 11:18:13</sys_updated_on>
+        <test display_value="Notification SM.now - GlideRecordUtils - getInternalType()">5d8eaba22b3ba150c0fb4cfbad01a0c4</test>
+        <test_suite display_value="Notification SM.now - GlideRecordUtils">0685f7182b332910c0fb4cfbad01a099</test_suite>
+    </sys_atf_test_suite_test>
+</record_update>

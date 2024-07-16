@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.TicketLinkService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Generate the email ticket link.</description>
+        <name>TicketLinkService</name>
+        <script><![CDATA[/* eslint-disable no-underscore-dangle */
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class TicketLinkService
+ * @description Generate the email ticket link.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class TicketLinkService extends ContentService {
+
+    /**
+   * Generate the email ticket link.
+   *
+   * var notifParams = {
+        'company': '',
+        'recipients': '',
+        'languageId': '',
+        'paramObj': '';
+      };
+   *
+   *
+   * @param {Object} notifParams see email.engine.js
+   */
+    process(notifParams) {
+        let schemaReader = new OptionSchemaReader();
+        let options = schemaReader.readOptions('TicketLinkService', this.sysEventEmailAction);
+
+        let display = options.display || 'true';
+
+        gs.debug(`[TicketLinkService] notifParams ==> ${ JSON.stringify(notifParams)}`);
+        gs.debug(`[TicketLinkService] notifParams.recipients ==> ${ notifParams.recipients}`);
+        gs.debug(`[TicketLinkService] this.current ==> ${(this.current)}`);
+
+        if(display === 'true') {
+            let currObj = this.current;
+            const link = new x_dtitg_notificati.LinkGeneratorProcessor().generateTicketURL(notifParams, currObj);
+            // eslint-disable-next-line no-underscore-dangle
+            const content = this._generateContent(link);
+            this.template.print(content);
+        }
+    }
+
+    /**
+     * Generate the ticket link
+     *
+	 * @param {Object} notifParams see email.engine.js
+	 *
+     * @returns {String} ticket link
+     *
+     * TODO: has to be moved to generic solution
+     */
+    _generateTicketLink(notifParams) {
+        const tableName = UtilityFunctions.determineTable(this.current);
+        const portalSuffix = new sn_ex_emp_fd.FoundationNotificationUtil().getPortalSuffix();
+        const portalLink = `/${ portalSuffix }?id=ticket&table=${ tableName }&sys_id=${ this.current.sys_id.toString()}`;
+        const classicLink = `/${ tableName }.do?sys_id=${ this.current.sys_id.toString()}`;
+        const resultLink = this._determineLink(notifParams, portalLink, classicLink);
+
+        gs.debug(`[TicketLinkService] [_generateTicketLink] link ==> ${ resultLink}`);
+
+        return resultLink;
+    }
+
+    /**
+     * Genrates the template content
+     *
+     * @param {String} link Specifies the URL of the page the link goes to
+     *
+     * @returns {String} template content
+     */
+    _generateContent(link) {
+        let content = this.current.getValue('number');
+
+        if (x_dtitg_core_smnow.UtilityFunctions.isNotBlank(link)) {
+            content = `<a href="${ link }">${ this.current.getValue('number') }</a>`;
+        }
+
+        return content;
+    }
+
+    /**
+     * Determines the correct link based on User's role
+	 *
+	 * @param {Object} notifParams see email.engine.js
+     *
+     * @param {String} portalLink URL of incident on default portal
+	 *
+	 * @param {String} classicLink URL of incident on native view
+     *
+     * @returns {String} template content
+     */
+    _determineLink(notifParams, portalLink, classicLink) {
+        const expectedRoleCount = 1;
+        const isInternalUser = x_dtitg_core_smnow.UserManagementUtils.hasRole(notifParams.recipients, 'snc_internal');
+        const rolesCount = x_dtitg_core_smnow.GlideRecordUtils
+            .getRowCount(Constants.USER_HAS_ROLE, `user=${ notifParams.recipients}`);
+
+        let resultLink = parseInt(rolesCount, 10) === expectedRoleCount && isInternalUser ? portalLink : classicLink;
+
+        gs.debug(`[TicketLinkService] [_determineLink] link ==> ${ resultLink}`);
+
+        return resultLink;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-15 08:10:11</sys_created_on>
+        <sys_id>64ae43732b1be950c0fb4cfbad01a0f4</sys_id>
+        <sys_mod_count>58</sys_mod_count>
+        <sys_name>TicketLinkService</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_64ae43732b1be950c0fb4cfbad01a0f4</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-07 09:15:50</sys_updated_on>
+    </sys_script_include>
+</record_update>

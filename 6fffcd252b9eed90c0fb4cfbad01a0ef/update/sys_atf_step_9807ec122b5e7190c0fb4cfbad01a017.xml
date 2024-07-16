@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Navigate to the 'Emails' module in the 'System Logs' application</description>
+        <display_name>Navigate to Module</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>40</order>
+        <step_config display_value="Navigate to Module">c832fc4073720300c79260bdfaf6a7a0</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:32</sys_created_on>
+        <sys_id>9807ec122b5e7190c0fb4cfbad01a017</sys_id>
+        <sys_mod_count>19</sys_mod_count>
+        <sys_name>Navigate to Module</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_9807ec122b5e7190c0fb4cfbad01a017</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-11-17 15:16:03</sys_updated_on>
+        <table>sys_email</table>
+        <test display_value=" Notification SM.now-Setup Notifications(SMNOW-660)-1">5ef6e8122b5e7190c0fb4cfbad01a08e</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=9807ec122b5e7190c0fb4cfbad01a017"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>9807ec122b5e7190c0fb4cfbad01a017</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_nsharma2</sys_created_by>
+        <sys_created_on>2023-11-06 07:14:32</sys_created_on>
+        <sys_id>5407ec122b5e7190c0fb4cfbad01a025</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_nsharma2</sys_updated_by>
+        <sys_updated_on>2023-11-06 07:14:32</sys_updated_on>
+        <value>8d620b63c611227b008368697b0b8d7b</value>
+        <variable display_value="Module">b6d2b40c73720300c79260bdfaf6a786</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_c832fc4073720300c79260bdfaf6a7a0^id=9807ec122b5e7190c0fb4cfbad01a017"/>
+</record_update>

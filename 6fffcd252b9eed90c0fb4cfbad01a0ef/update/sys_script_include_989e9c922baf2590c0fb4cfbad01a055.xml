@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.GlideRecordUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Returns the formatted display value of a specified field from an associated GlideRecord object.</description>
+        <name>GlideRecordUtils</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+/**
+ * @class GlideRecordUtils
+ * @description Returns the formatted display value of a specified field from an associated GlideRecord object.
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class GlideRecordUtils {
+
+    /**
+     * Returns the formatted display value of a specified field from an associated GlideRecord object.
+     *
+     * @param {Object} record GliedRecord object
+     * @param {String} field Column name for which to return the GlideElement object.
+     *
+     * @returns {String}  displayValue The Value in the current user's display format.
+     */
+    static getElementDisplayValue(record, field) {
+        let displayValue = '';
+        let element = GlideRecordUtils.getElement(record, field);
+
+        if (element) {
+            displayValue = element.getDisplayValue();
+        }
+
+        return displayValue;
+    }
+
+    /**
+     * Retrieves the GlideElement object for the specified field.
+     *
+     * @param {Object} record GliedRecord object
+     * @param {String} field Column name for which to return the GlideElement object.
+     *
+     * @returns {Object} The GlideElement for the specified column of the current record.
+     */
+    static getElement(record, field) {
+        let recordElement = null;
+        let element = record.getElement(field);
+
+        if (element) {
+            recordElement = element;
+        } else {
+            gs.warn(`[GlideRecordUtils][getElement] not a valid field ==> ${ field}`);
+        }
+
+        return recordElement;
+    }
+
+
+    /**
+     * Retrieves the element's internal data type.
+     *
+     * @param {Object} record GlideRecord object
+     * @param {String} field Column name for which to return the GlideElement object.
+     *
+     * @returns {String} the element's internal data type.
+     */
+    static getInternalType_(record, field) {
+        let element = record.getElement(field);
+        return element.getED().getInternalType();
+    }
+
+    /**
+     * Retrieves the element's value.
+     *
+     * @param {Object} record GlideRecord object
+     * @param {String} field Column name for which to return the GlideElement object.
+     *
+     * @returns {String} the element's value.
+     */
+    static getElementValue(record, field) {
+
+        gs.debug(`[HtmlTableDataGenerator][generateTemplateData] record => ${ record}`);
+        gs.debug(`[HtmlTableDataGenerator][generateTemplateData] field => ${ field}`);
+
+        return record.getElement(field).toString();
+    }
+
+    /**
+     * Retrieves the element's internal data type.
+     *
+     * @param {Object} record GliedRecord object
+     * @param {String} field Column name for which to return the GlideElement object.
+     * @param {String} parent parent table
+     *
+     * @returns {String} internal type of the field
+     */
+    static getInternalType(record, field) {
+        const limit = 1;
+        let type = '';
+        let table = UtilityFunctions.determineTable(record);
+        let parentTable = GlideRecordUtils.getParentTable(table);
+        let query = QueryBuilder.findType(field, table, parentTable);
+
+        gs.debug(`[GlideRecordUtils][getInternalType] query ==> ${query}`);
+
+        let glRecord = x_dtitg_core_smnow.GlideRecordUtils.getLimitedGlideRecord(Constants.SYS_DICTIONARY, query, limit);
+
+        if (glRecord.next()) {
+            type = glRecord.getValue('internal_type');
+        }
+
+        return type;
+    }
+
+    /**
+     * Returns the parrent table of a give table.
+     *
+     * @param {String} table childe table
+     *
+     * @returns {String} parent super table
+     */
+    static getParentTable(table) {
+        const limit = 1;
+        let parent = '';
+        let query = QueryBuilder.findParentTable(table);
+
+        gs.debug(`[GlideRecordUtils][getParentTable] query ==> ${query}`);
+        let grRecord = x_dtitg_core_smnow.GlideRecordUtils.getLimitedGlideRecord(Constants.SYS_DB_OBJECT, query, limit);
+
+        if (grRecord.next()) {
+            parent = grRecord.super_class.name.toString();
+        }
+
+        return parent;
+    }
+}]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-06-22 13:45:04</sys_created_on>
+        <sys_id>989e9c922baf2590c0fb4cfbad01a055</sys_id>
+        <sys_mod_count>59</sys_mod_count>
+        <sys_name>GlideRecordUtils</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_989e9c922baf2590c0fb4cfbad01a055</sys_update_name>
+        <sys_updated_by>admin_tonguyen</sys_updated_by>
+        <sys_updated_on>2023-09-16 04:48:08</sys_updated_on>
+    </sys_script_include>
+</record_update>

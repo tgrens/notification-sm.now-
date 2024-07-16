@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_test_suite_test">
+    <sys_atf_test_suite_test action="INSERT_OR_UPDATE">
+        <abort_on_failure>false</abort_on_failure>
+        <order>100</order>
+        <sys_class_name>sys_atf_test_suite_test</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-04-18 09:08:15</sys_created_on>
+        <sys_id>914841c38c21c2d05dcf10bd1c643ba9</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>cca561078ca1c2d05dcf10bd1c643b12</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_test_suite_test_914841c38c21c2d05dcf10bd1c643ba9</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 08:58:53</sys_updated_on>
+        <test display_value="Notification SM.now - LinkGenerator - process()">cca561078ca1c2d05dcf10bd1c643b12</test>
+        <test_suite display_value="Notification SM.now - LinkGenerator">6fc1919b8c458a105dcf10bd1c643b0b</test_suite>
+    </sys_atf_test_suite_test>
+</record_update>

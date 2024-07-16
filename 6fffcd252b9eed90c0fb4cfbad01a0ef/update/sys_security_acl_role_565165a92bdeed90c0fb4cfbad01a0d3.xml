@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-19 07:22:51</sys_created_on>
+        <sys_id>565165a92bdeed90c0fb4cfbad01a0d3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_dtitg_notificati_email_fields.admin</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_security_acl display_value="x_dtitg_notificati_email_fields">ce5165a92bdeed90c0fb4cfbad01a0cf</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_565165a92bdeed90c0fb4cfbad01a0d3</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2023-04-19 07:22:51</sys_updated_on>
+        <sys_user_role display_value="admin" name="admin">2831a114c611228501d4ea6c309d626d</sys_user_role>
+    </sys_security_acl_role>
+</record_update>

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.ConditionControllerProcessor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Script that checks (Chain of Responsibility) to decide if notification should be send.&#13;
+&#13;
+How to use:&#13;
+Mandatory entry in the  Advanced condition (advanced_condition) of the Notification (sysevent_email_action)&#13;
+&#13;
+var controller = new x_dtitg_notificati.ConditionControllerProcessor();&#13;
+&#13;
+var enabled = controller.process({&#13;
+  'name':  'Name of the notification',&#13;
+  'current': current object for that the notification will be triggered,&#13;
+  'event': event that triggers the notification,&#13;
+  'expression': expression that evaluate to true or false&#13;
+});&#13;
+&#13;
+answer = enabled;</description>
+        <name>ConditionControllerProcessor</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/**
+ * @class ConditionControllerProcessor
+ * @description Script that checks (Chain of Responsibility) to decide if notification should be send.
+ *
+ * How to use:
+ * Mandatory entry in the  Advanced condition (advanced_condition) of the Notification (sysevent_email_action)
+ *
+ * var controller = new x_dtitg_notificati.ConditionControllerProcessor();
+ *
+ * var enabled = controller.process({
+ *  'name':  'Name of the notification',
+ *  'current': current object for that the notification will be triggered,
+ *  'event': event that triggers the notification,
+ *  'expression': expression that evaluate to true or false
+ * });
+ *
+ * answer = enabled;
+ * @since 09/11/2023
+ * @date  09/11/2023
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class ConditionControllerProcessor {
+
+    /**
+   * Function that checks (Chain of Responsibility) to
+   * decide if notification should be send.
+   *
+   * @param {Object} conf
+   *
+      {
+        'name': 'SN.now',     name of the notification
+        'current': current,   current object for that the notification will be triggered
+        'event': event,       event that triggers the notification
+        'expression': true    expression that evaluate to true or false
+      }
+   *
+   * @returns {boolean} true / false
+   */
+    sendNotification(conf) {
+        let answer = true;
+
+        // Chain ordering:
+        // 1. InternalTicketCondition
+        // 2. ExpressionCondition
+        // 3. Assigenment group
+        // 4. BusinessServiceCondition
+        // 5. Company
+
+        /*         let companyCondition = new x_dtitg_notificati.CompanyCondition();
+
+        let businessServiceCondition = new BusinessServiceCondition();
+        businessServiceCondition.setNext(companyCondition);
+
+        let assignmentGroupCondition = new AssignmentGroupCondition();
+        assignmentGroupCondition.setNext(businessServiceCondition); */
+
+        let enabledCondition = new EnabledCondition();
+
+        let expressionCondition = new ExpressionCondition();
+        expressionCondition.setNext(enabledCondition);
+
+        let internalTicketCondition = new InternalTicketCondition();
+        internalTicketCondition.setNext(expressionCondition);
+
+        // initialize chain of responsibility. Execute first chain in queue
+        answer = internalTicketCondition.process(conf);
+
+        gs.debug(`[ConditionControllerProcessor][notificationEnabled] enabled =>${ answer }, notification =>${ conf.name}`);
+
+        return answer;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2023-04-21 06:43:30</sys_created_on>
+        <sys_id>177b6fce2b56a1d0c0fb4cfbad01a09e</sys_id>
+        <sys_mod_count>45</sys_mod_count>
+        <sys_name>ConditionControllerProcessor</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_177b6fce2b56a1d0c0fb4cfbad01a09e</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-25 15:03:34</sys_updated_on>
+    </sys_script_include>
+</record_update>

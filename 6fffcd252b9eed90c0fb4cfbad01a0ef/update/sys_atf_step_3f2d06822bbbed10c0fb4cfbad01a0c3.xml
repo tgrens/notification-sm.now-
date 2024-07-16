@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Run Server Side Validation Script</description>
+        <display_name>Run Server Side Script</display_name>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>1</order>
+        <step_config display_value="Run Server Side Script">41de4a935332120028bc29cac2dc349a</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-04 13:30:51</sys_created_on>
+        <sys_id>3f2d06822bbbed10c0fb4cfbad01a0c3</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Run Server Side Script</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_3f2d06822bbbed10c0fb4cfbad01a0c3</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-04 13:34:51</sys_updated_on>
+        <table/>
+        <test display_value="Notification SM.now - FieldTranslator - process()">9a85c6862b7bed10c0fb4cfbad01a039</test>
+        <timeout/>
+        <warning_message/>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=3f2d06822bbbed10c0fb4cfbad01a0c3"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>3f2d06822bbbed10c0fb4cfbad01a0c3</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-04 13:30:51</sys_created_on>
+        <sys_id>316e8a062bbbed10c0fb4cfbad01a00a</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-04 13:30:51</sys_updated_on>
+        <value>3.1</value>
+        <variable display_value="Jasmine version">42f2564b73031300440211d8faf6a777</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>3f2d06822bbbed10c0fb4cfbad01a0c3</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-07-04 13:30:51</sys_created_on>
+        <sys_id>356e8a062bbbed10c0fb4cfbad01a00a</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-07-04 13:34:34</sys_updated_on>
+        <value>(function(outputs, steps, params, stepResult, assertEqual) {&#13;
+&#13;
+	const record = {};&#13;
+	const field = 'category';&#13;
+	const languageId = 'de';&#13;
+    &#13;
+	try{&#13;
+	const helper = new FieldTranslator();&#13;
+	const result = helper.process(record, field, languageId);&#13;
+	}&#13;
+	catch(ex) {&#13;
+	assertEqual({&#13;
+		name: 'FieldTranslator#process()',&#13;
+		value: ex.message,&#13;
+		shouldbe: 'Abstract method!'&#13;
+	});&#13;
+	}&#13;
+&#13;
+})(outputs, steps, params, stepResult, assertEqual);</value>
+        <variable display_value="Test script">989d9e235324220002c6435723dc3484</variable>
+    </sys_variable_value>
+</record_update>

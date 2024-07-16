@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.RelatedRecordTableService</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Generate an html table for an related record.</description>
+        <name>RelatedRecordTableService</name>
+        <script><![CDATA[/* eslint-disable camelcase */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/**
+ * @class RelatedRecordTableService
+ * @description Generate an html table for an related record.
+ * @since 13/06/2024
+ * @date  13/06/2024
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class RelatedRecordTableService extends ContentService {
+
+
+    /**
+   * Generate an html table for an related record.
+   *
+   * var notifParams = {
+        'company': '',
+        'recipients': '',
+        'languageId': '',
+        'paramObj': '';
+      };
+   *
+   *
+   * @param {Object} notifParams see email.engine.js
+   */
+    process(notifParams) {
+        const zeroRow = 0;
+
+        let schemaReader = new OptionSchemaReader();
+        let options = schemaReader.readOptions('RelatedRecordTableService', this.sysEventEmailAction);
+
+        gs.debug(`[Notification][RelatedRecordTableService][process] options ==> ${ options}`);
+
+        let display = options.display || 'false';
+        let fieldList = options.fieldList ? options.fieldList.split(',') : [ 'number', 'state', 'short_description' ];
+        let table = options.table ? options.table : 'incident';
+        let column = options.column ? options.column : 'sys_id';
+        let tableHeading = options.tableHeading || '';
+        let message = '';
+        let languageId = this.getLanguageId(notifParams);
+
+        gs.debug(`[Notification][RelatedRecordTableService][process] languageId ==> ${ languageId}`);
+        gs.debug(`[Notification][RelatedRecordTableService][process] display ==> ${ display}`);
+
+        if(display === 'true') {
+
+            const query = QueryBuilder.findEntries(column, this.current.sys_id);
+            gs.debug(`[Notification][RelatedRecordTableService][process] query ==> ${ query}`);
+
+            let rowCount = parseInt(x_dtitg_core_smnow.GlideRecordUtils.getRowCount(table, query), 10);
+
+            gs.debug(`[Notification][RelatedRecordTableService][process] rowCount ==> ${ rowCount}`);
+
+            if (rowCount === zeroRow) {
+            // eslint-disable-next-line no-underscore-dangle
+                message = this._getMessage(Constants.EMPTY_DATA, notifParams);
+                this.template.print(message);
+            } else {
+
+                let glRecord = x_dtitg_core_smnow.GlideRecordUtils.getGlideRecord(table, query);
+
+                let dataGenerator = new HtmlTableDataGenerator();
+                let data = dataGenerator.generateTemplateData(glRecord, table, fieldList, languageId);
+
+                gs.debug(`[Notification][RelatedRecordTableService][process] data => ${ JSON.stringify(data)}`);
+                // eslint-disable-next-line no-underscore-dangle
+                tableHeading = this._getMessage(tableHeading, notifParams);
+
+                gs.debug(`[Notification][RelatedRecordTableService][process] tableHeading => ${ tableHeading}`);
+
+                let tableGenerator = new HtmlTableGenerator();
+                let htmlTable = tableGenerator.writeTableWithHeading(tableHeading, data);
+
+                gs.debug(`[Notification][RelatedRecordTableService][process] htmlTable => ${ JSON.stringify(htmlTable)}`);
+
+                this.template.print(htmlTable);
+            }
+        }
+    }
+
+    /**
+     * Returns the translated message of a label
+     *
+     * @param {String} key lable key
+     * @param {Object} notifParams see email.engine.js
+     *
+     * @returns {String} translated key
+     */
+    _getMessage(key, notifParams) {
+
+        gs.debug(`[Notification][RelatedRecordTableService][_getMessage] notifParams ==> ${ JSON.stringify(notifParams)}`);
+
+        let service = new LabelService(this.current, this.template, this.email, this.sysEventEmailAction, this.event);
+        let message = service.process(key, notifParams);
+
+        return message;
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-06-06 13:31:57</sys_created_on>
+        <sys_id>fee736721dea06105dcf5cb2086a132d</sys_id>
+        <sys_mod_count>104</sys_mod_count>
+        <sys_name>RelatedRecordTableService</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_fee736721dea06105dcf5cb2086a132d</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-06-18 09:51:15</sys_updated_on>
+    </sys_script_include>
+</record_update>

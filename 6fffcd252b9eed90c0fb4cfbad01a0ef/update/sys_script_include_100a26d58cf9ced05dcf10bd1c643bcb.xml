@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.EnabledCondition</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Validates if a email has to be send for a given ticket.</description>
+        <name>EnabledCondition</name>
+        <script><![CDATA[/* eslint-disable no-underscore-dangle */
+/* eslint-disable camelcase */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+
+/**
+ * @class EnabledCondition
+ * @description Validates if a email has to be send for a given ticket.
+ * @since 29/04/2024
+ * @date  29/04/2024
+ * @version 1.0.0
+ * @author Thomas Grensemann E-Mail: <thomas.grensemann@t-systems.com>
+ *
+ */
+class EnabledCondition extends ConditionController {
+
+    /**
+   * Validates if a email has to be send for a given ticket.
+   *
+   * @param {object} conf see NotificationConditionController#notificationEnabled()
+   *
+   * @returns {Boolean} true/false
+    */
+    checkCondition(conf) {
+        let hasToNotified = true;
+
+        let sysEventEmailAction = x_dtitg_core_smnow.GlideRecordUtils.getRecord(Constants.NOTIFICATION, 'name', conf.name);
+
+        gs.debug(`[EnabledCondition][checkCondition] sysEventEmailAction => ${ sysEventEmailAction}`);
+
+        let hasEntry = this._hasEnabledEntries(sysEventEmailAction);
+
+        gs.debug(`[EnabledCondition][checkCondition] hasEntry => ${ hasEntry}`);
+
+        if (hasEntry) {
+            let processor = new CompanyDeterminerProcessor();
+            let company = processor.findCompany(conf.current, sysEventEmailAction, conf.event);
+
+            gs.debug(`[EnabledCondition][checkCondition] company => ${ company}`);
+
+            processor = new BusinessServiceDeterminerProcessor();
+            let businessService = processor.findBusinessService(conf.current, sysEventEmailAction, conf.event);
+
+            gs.debug(`[EnabledCondition][checkCondition] businessService => ${ businessService}`);
+
+            processor = new AssignmentGroupDeterminerProcessor();
+            let assignmentGroup = processor.findAssignmentGroup(conf.current, sysEventEmailAction, conf.event);
+
+            gs.debug(`[EnabledCondition][checkCondition] assignmentGroup => ${ assignmentGroup}`);
+
+            hasToNotified = this._hasToNotified(company, businessService, assignmentGroup, sysEventEmailAction);
+        }
+
+        gs.debug(`[EnabledCondition][checkCondition] hasToNotified => ${ hasToNotified}`);
+
+        return hasToNotified;
+    }
+
+    /**
+   * Checks whether the table "Enabled (x_dtitg_notificati_enabled)" contains an entry.
+   *
+   * @param {Object} sysEventEmailAction sysevent_email_action GlideRecord object
+   * @param {String} assignmentGroup sys_id of the assignment group
+   *
+   * @returns {Boolean} true/false
+   */
+    _hasEnabledEntries(sysEventEmailAction) {
+        let query = QueryBuilder.findEntries('notification', sysEventEmailAction.getUniqueValue());
+        gs.debug(`[EnabledCondition][_hasEnabledEntries] query => ${ query}`);
+
+        return x_dtitg_core_smnow.GlideRecordUtils.hasEntry(Constants.ENABLED, query);
+    }
+
+
+    /**
+       * Checks if the table "Enabled (x_dtitg_notificati_enabled)" contains an entry for the given paramters.
+       *
+       * @param {String} company sys_id
+       * @param {String} businessService sys_id
+       * @param {String} assignmentGroup sys_id
+       * @param {Object} sysEventEmailAction sysevent_email_action GlideRecord object
+       *
+       * @returns {Boolean} true/false
+       */
+    _hasToNotified(company, businessService, assignmentGroup, sysEventEmailAction) {
+
+        let query = QueryBuilder.findEnabledEntrie(
+            sysEventEmailAction.getUniqueValue(),
+            company,
+            businessService,
+            assignmentGroup
+        );
+
+        gs.debug(`[EnabledCondition][_hasToNotified] query => ${ query}`);
+
+        return x_dtitg_core_smnow.GlideRecordUtils.hasEntry(Constants.ENABLED, query);
+    }
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_thomas</sys_created_by>
+        <sys_created_on>2024-04-25 13:53:10</sys_created_on>
+        <sys_id>100a26d58cf9ced05dcf10bd1c643bcb</sys_id>
+        <sys_mod_count>11</sys_mod_count>
+        <sys_name>EnabledCondition</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_100a26d58cf9ced05dcf10bd1c643bcb</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-05-03 05:41:59</sys_updated_on>
+    </sys_script_include>
+</record_update>

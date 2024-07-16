@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_atf_step">
+    <sys_atf_step action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <copied_from/>
+        <description>Update a record in 'sys_user' with the following values:
+Company = {{Step 3: Record Insert.Record}}
+Confirm the record was successfully updated
+
+Warning: Using a system table may cause unexpected behavior for other tests running in parallel&#13;
+See the documentation for Test Design Considerations</description>
+        <display_name>Record Update</display_name>
+        <inputs/>
+        <inputs/>
+        <mugshots_cache_json/>
+        <notes/>
+        <order>4</order>
+        <step_config display_value="Record Update">17a72288df60220062fe6c7a4df26397</step_config>
+        <sys_class_name>sys_atf_step</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-29 11:09:28</sys_created_on>
+        <sys_id>9cfd3b542bb32910c0fb4cfbad01a033</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Record Update</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_atf_step_9cfd3b542bb32910c0fb4cfbad01a033</sys_update_name>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-29 12:04:08</sys_updated_on>
+        <table>sys_user</table>
+        <test display_value="Notification SM.now - CompanyCondition - checkCondition()">ac7a4abb2bef2510c0fb4cfbad01a0df</test>
+        <timeout/>
+        <warning_message>Warning: Using a system table may cause unexpected behavior for other tests running in parallel&#13;
+See the documentation for Test Design Considerations</warning_message>
+    </sys_atf_step>
+    <sys_variable_value action="delete_multiple" query="document_key=9cfd3b542bb32910c0fb4cfbad01a033"/>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>9cfd3b542bb32910c0fb4cfbad01a033</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-29 11:09:29</sys_created_on>
+        <sys_id>1a1e7f542bb32910c0fb4cfbad01a074</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-29 11:09:29</sys_updated_on>
+        <value>1</value>
+        <variable display_value="Enforce security">46dbcb535320220002c6435723dc3409</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>9cfd3b542bb32910c0fb4cfbad01a033</document_key>
+        <order>300</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-29 11:09:29</sys_created_on>
+        <sys_id>561e7f542bb32910c0fb4cfbad01a074</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-29 11:09:29</sys_updated_on>
+        <value/>
+        <variable display_value="Record">501c8f535320220002c6435723dc34da</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>9cfd3b542bb32910c0fb4cfbad01a033</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-29 11:09:29</sys_created_on>
+        <sys_id>9e1e7f542bb32910c0fb4cfbad01a073</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-29 11:09:29</sys_updated_on>
+        <value>record_successfully_updated</value>
+        <variable display_value="Assert type">334b7bb7675003007ba405225685ef72</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>9cfd3b542bb32910c0fb4cfbad01a033</document_key>
+        <order>400</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-29 11:09:29</sys_created_on>
+        <sys_id>9e1e7f542bb32910c0fb4cfbad01a074</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-29 11:09:29</sys_updated_on>
+        <value>company={{step['ac0df3d02bb32910c0fb4cfbad01a0e1'].record_id}}^EQ</value>
+        <variable display_value="Field values">bc4c43935320220002c6435723dc34a2</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>9cfd3b542bb32910c0fb4cfbad01a033</document_key>
+        <order>200</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-29 11:09:29</sys_created_on>
+        <sys_id>da1e7f542bb32910c0fb4cfbad01a074</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-29 11:09:29</sys_updated_on>
+        <value>sys_user</value>
+        <variable display_value="Table">53fb0f535320220002c6435723dc34ec</variable>
+    </sys_variable_value>
+    <sys_element_mapping action="delete_multiple" query="id=9cfd3b542bb32910c0fb4cfbad01a033"/>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>field_values</field>
+        <id>9cfd3b542bb32910c0fb4cfbad01a033</id>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-29 11:09:29</sys_created_on>
+        <sys_id>1e1e7f542bb32910c0fb4cfbad01a073</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-29 11:09:29</sys_updated_on>
+        <table>var__m_atf_input_variable_17a72288df60220062fe6c7a4df26397</table>
+        <value>company={{step['ac0df3d02bb32910c0fb4cfbad01a0e1'].record_id}}^EQ</value>
+    </sys_element_mapping>
+    <sys_element_mapping action="INSERT_OR_UPDATE">
+        <field>record_id</field>
+        <id>9cfd3b542bb32910c0fb4cfbad01a033</id>
+        <sys_created_by>admin_sschne98</sys_created_by>
+        <sys_created_on>2023-06-29 11:09:29</sys_created_on>
+        <sys_id>561e7f542bb32910c0fb4cfbad01a073</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin_sschne98</sys_updated_by>
+        <sys_updated_on>2023-06-29 11:09:29</sys_updated_on>
+        <table>var__m_atf_input_variable_17a72288df60220062fe6c7a4df26397</table>
+        <value>{{step['d1509e732b236510c0fb4cfbad01a0d6'].user}}</value>
+    </sys_element_mapping>
+</record_update>

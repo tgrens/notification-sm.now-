@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_dtitg_notificati.LinkGeneratorProcessor</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Determines the URL of the Ticket(Chain of Responsibility) for the given parameters.</description>
+        <name>LinkGeneratorProcessor</name>
+        <script><![CDATA[/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/**
+ * @class LinkGeneratorProcessor
+ * @description Determines the notification(Chain of Responsibility) for the given parameters.
+ * @since 11/3/2024
+ * @date  11/3/2024
+ * @version 1.0.0
+ * @author Siddhant Salunkhe E-Mail: <siddhant.salunkhe@t-systems.com>
+ *
+ */
+
+class LinkGeneratorProcessor {
+
+    /**
+     * @description This function returns exact URL of ticket
+     *
+     * @param {Object} notifParams see email.engine.js
+     * @param {Object} currObj - Current GlideRecord Object
+     * @returns{String} exact URL of ticket
+     *
+     */
+    generateTicketURL(notifParams, currObj) {
+        let link = '';
+
+        // Chain ordering:
+        // 1. UnknownUserLink
+        // 2. RequesterLink
+        // 3. CSDAgentLink
+        // 4. FulfillerLink
+
+        let fulfillerLink = new FulfillerLink();
+
+        let csdLink = new ITILUserLink();
+        csdLink.setNext(fulfillerLink);
+
+        let requesterLink = new RequesterLink();
+        requesterLink.setNext(csdLink);
+
+        let unknownUserLink = new UnknownUserLink();
+        unknownUserLink.setNext(requesterLink);
+
+        // initialize chain of responsibility. Execute first chain in queue
+        link = unknownUserLink.process(notifParams, currObj);
+
+        // eslint-disable-next-line eqeqeq
+        return link == Constants.UNKNOW_USER ? '' : link;
+    }
+
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin_ssalunkhe</sys_created_by>
+        <sys_created_on>2024-03-11 09:19:32</sys_created_on>
+        <sys_id>8e7b75767dfc861c5dcfc8911252ad02</sys_id>
+        <sys_mod_count>30</sys_mod_count>
+        <sys_name>LinkGeneratorProcessor</sys_name>
+        <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Notification SM.now WORK IN PROGRESS">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_scope>
+        <sys_update_name>sys_script_include_8e7b75767dfc861c5dcfc8911252ad02</sys_update_name>
+        <sys_updated_by>admin_thomas</sys_updated_by>
+        <sys_updated_on>2024-04-30 10:50:15</sys_updated_on>
+    </sys_script_include>
+</record_update>
