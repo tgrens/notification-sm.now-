@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="eef03f0a2b96a1d0c0fb4cfbad01a06f" label="Enabled" max_length="40" name="x_dtitg_notificati_enabled" type="collection">
+        <element attributes="edge_encryption_enabled=true" default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Company" max_length="32" name="company" reference="core_company" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Notification" max_length="32" name="notification" read_only="true" reference="sysevent_email_action" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false,​ref_contributions=show_business_service_related_bsm_map;show_business_service_related_records" label="Business service" max_length="32" name="business_service" reference="cmdb_ci_service" reference_qual="service_classification=Business Service^EQ" reference_qual_condition="service_classification=Business Service^EQ" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Assignment group" max_length="32" name="assignment_group" reference="sys_user_group" reference_qual="active=true^typeNOT LIKEc9398b3d2bfd3d10c0fb4cfbad01a007^typeNOT LIKE0e46980a2b722510c0fb4cfbad01a020^EQ" reference_qual_condition="active=true^typeNOT LIKEc9398b3d2bfd3d10c0fb4cfbad01a007^typeNOT LIKE0e46980a2b722510c0fb4cfbad01a020^EQ" type="reference"/>
+        <element label="Number" max_length="40" name="number" read_only="true" type="string"/>
+        <index name="index">
+            <element name="assignment_group"/>
+        </index>
+        <index name="index2">
+            <element name="business_service"/>
+        </index>
+        <index name="index3">
+            <element name="company"/>
+        </index>
+        <index name="index4">
+            <element name="notification"/>
+        </index>
+    </element>
+</database>

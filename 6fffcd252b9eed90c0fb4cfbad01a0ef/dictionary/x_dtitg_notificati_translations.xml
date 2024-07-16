@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="hasLabels=true" db_object_id="68fe9de52bdeed90c0fb4cfbad01a047" label="Translations" max_length="40" name="x_dtitg_notificati_translations" type="collection">
+        <element attributes="goto_use_starts_with=true" display="true" label="Key" mandatory="true" max_length="255" name="key" type="string"/>
+        <element active="false" attributes="edge_encryption_enabled=true,encode_utf8=false,​ref_contributions=show_business_service_related_bsm_map;show_business_service_related_records" label="Business service" max_length="32" name="business_service" reference="cmdb_ci_service" reference_qual="service_classification=Business Service^EQ" reference_qual_condition="service_classification=Business Service^EQ" type="reference"/>
+        <element attributes="goto_use_starts_with=true" calculation="(function calculatedFieldValue(current) {&#10;&#9;return current.language.id;&#10;})(current);" label="Language id" max_length="2" name="language_id" read_only="true" type="string" virtual="true"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Notification" max_length="32" name="notification" reference="sysevent_email_action" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" choice="3" default="English" label="Language" max_length="32" name="language" reference="sys_language" type="reference">
+            <choice/>
+        </element>
+        <element attributes="edge_encryption_enabled=true,encryption_enabled=true" label="Strip HTML" max_length="40" name="strip_html" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" default="true" label="Display" max_length="40" name="display" type="boolean"/>
+        <element attributes="edge_encryption_enabled=true" default="true" label="Active" max_length="40" name="active" type="boolean"/>
+        <element label="Number" max_length="40" name="number" type="string"/>
+        <element active="false" attributes="edge_encryption_enabled=true" label="Company" max_length="32" name="company" reference="core_company" type="reference"/>
+        <element attributes="convert_urls=false,edge_encryption_enabled=true" dependent="notification.collection" dependent_on_field="notification.collection" label="Message HTML" mandatory="true" max_length="65000" name="message_html" type="html_script" use_dependent_field="true"/>
+        <element attributes="edge_encryption_enabled=true,no_sort=true,slushbucket_ref_no_expand=true" label="Assignment group" max_length="4000" name="assignment_group" reference="sys_user_group" reference_qual="active=true^typeNOT LIKEc9398b3d2bfd3d10c0fb4cfbad01a007^typeNOT LIKE0e46980a2b722510c0fb4cfbad01a020^EQ" reference_qual_condition="active=true^typeNOT LIKEc9398b3d2bfd3d10c0fb4cfbad01a007^typeNOT LIKE0e46980a2b722510c0fb4cfbad01a020^EQ" type="glide_list"/>
+        <index name="index">
+            <element name="business_service"/>
+        </index>
+        <index name="index2">
+            <element name="company"/>
+        </index>
+        <index name="index3">
+            <element name="language"/>
+        </index>
+        <index name="index4">
+            <element name="notification"/>
+        </index>
+    </element>
+</database>

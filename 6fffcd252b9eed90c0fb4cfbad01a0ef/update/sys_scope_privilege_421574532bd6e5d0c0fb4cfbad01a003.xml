@@ -16,7 +16,7 @@
         <sys_updated_by>admin_thomas</sys_updated_by>
         <sys_updated_on>2023-04-24 14:38:52</sys_updated_on>
         <target_name>UtilityFunctions</target_name>
-        <target_scope display_value="Core SM.now WORK IN PROGRESS">d6da84e72b156510c0fb4cfbad01a078</target_scope>
+        <target_scope display_value="">d6da84e72b156510c0fb4cfbad01a078</target_scope>
         <target_type>sys_script_include</target_type>
     </sys_scope_privilege>
 </record_update>

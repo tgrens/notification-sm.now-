@@ -24,7 +24,7 @@ Confirm the record was successfully inserted</description>
         <sys_updated_by>admin_nsharma2</sys_updated_by>
         <sys_updated_on>2024-05-03 10:46:01</sys_updated_on>
         <table>core_company</table>
-        <test display_value="Incident Management SM.now-INM V1.1-(Manually)-Improve 3 strikerule-reset call attempts-Scenario 3">32bd3def2b767154c0fb4cfbad01a003</test>
+        <test display_value="">32bd3def2b767154c0fb4cfbad01a003</test>
         <timeout/>
         <warning_message/>
     </sys_atf_step>

@@ -16,7 +16,7 @@
         <sys_updated_by>system</sys_updated_by>
         <sys_updated_on>2024-01-12 12:54:50</sys_updated_on>
         <target_name>UserManagementUtils</target_name>
-        <target_scope display_value="Core SM.now WORK IN PROGRESS">d6da84e72b156510c0fb4cfbad01a078</target_scope>
+        <target_scope display_value="">d6da84e72b156510c0fb4cfbad01a078</target_scope>
         <target_type>sys_script_include</target_type>
     </sys_scope_privilege>
 </record_update>

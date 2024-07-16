@@ -2,7 +2,7 @@
     <sys_dictionary action="INSERT_OR_UPDATE" element="strip_html" table="x_dtitg_notificati_translations">
         <active>true</active>
         <array>false</array>
-        <attributes>encryption_enabled=true</attributes>
+        <attributes>edge_encryption_enabled=true,encryption_enabled=true</attributes>
         <audit>false</audit>
         <calculation><![CDATA[(function calculatedFieldValue(current) {
 
@@ -52,7 +52,6 @@
         <sys_class_name>sys_dictionary</sys_class_name>
         <sys_created_by>admin_thomas</sys_created_by>
         <sys_created_on>2023-06-19 08:37:34</sys_created_on>
-        <sys_id>5f55d44654a6c6105dcf5381d3c8349e</sys_id>
         <sys_name>Strip HTML</sys_name>
         <sys_package display_value="Notification SM.now WORK IN PROGRESS" source="x_dtitg_notificati">6fffcd252b9eed90c0fb4cfbad01a0ef</sys_package>
         <sys_policy/>

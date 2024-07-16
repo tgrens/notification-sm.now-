@@ -16,7 +16,7 @@
         <sys_updated_by>admin_thomas</sys_updated_by>
         <sys_updated_on>2023-09-12 08:46:29</sys_updated_on>
         <target_name>ConfigReader</target_name>
-        <target_scope display_value="Properties SM.now WORK IN PROGRESS">64d0340f2bc1a510c0fb4cfbad01a0d7</target_scope>
+        <target_scope display_value="">64d0340f2bc1a510c0fb4cfbad01a0d7</target_scope>
         <target_type>sys_script_include</target_type>
     </sys_scope_privilege>
 </record_update>

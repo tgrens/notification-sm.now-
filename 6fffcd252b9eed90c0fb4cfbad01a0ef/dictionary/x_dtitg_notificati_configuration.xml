@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element attributes="hasLabels=true" db_object_id="a639d9612bdeed90c0fb4cfbad01a060" label="Konfiguration" max_length="40" name="x_dtitg_notificati_configuration" type="collection">
+        <element attributes="ignore_filter_on_new=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Option schema" max_length="8000" name="option_schema" type="json"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Notification" mandatory="true" max_length="32" name="notification" reference="sysevent_email_action" type="reference"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Language" max_length="32" name="language" reference="sys_language" type="reference"/>
+        <element label="Description" mandatory="true" max_length="1500" name="description" type="string"/>
+        <element attributes="goto_use_starts_with=true" calculation="(function calculatedFieldValue(current) {&#10;&#9;&#10;  let id = null;&#10;&#9;&#10;&#9;if (current.language) {&#10;&#9;&#9;id = current.language.id;&#10;&#9;}&#10;&#9;&#10;  return id;&#10;})(current);" label="Language ID" max_length="40" name="language_id" read_only="true" type="string" virtual="true"/>
+        <index name="index">
+            <element name="language"/>
+        </index>
+        <index name="index2">
+            <element name="notification"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="131129692bdeed90c0fb4cfbad01a0ef" label="Email Fields" max_length="40" name="x_dtitg_notificati_email_fields" type="collection">
+        <element label="Number" max_length="40" name="number" read_only="true" type="string"/>
+        <element attributes="edge_encryption_enabled=true,encode_utf8=false" label="Notification" max_length="32" name="notification" read_only="true" reference="sysevent_email_action" type="reference"/>
+        <index name="index">
+            <element name="notification"/>
+        </index>
+    </element>
+</database>

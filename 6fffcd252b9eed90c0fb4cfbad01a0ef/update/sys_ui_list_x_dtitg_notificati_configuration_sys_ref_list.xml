@@ -3,7 +3,7 @@
         <sys_ui_list_element action="INSERT_OR_UPDATE">
             <average_value>false</average_value>
             <element>number</element>
-            <list_id display_value="x_dtitg_notificati_configuration" element="NULL" name="x_dtitg_notificati_configuration" parent="NULL" relationship="NULL" sys_domain="global" view="dfa78370192202105dcfb6e0a9a4837a">300ffa84f57e0e105dcf91c2a9019e27</list_id>
+            <list_id display_value="x_dtitg_notificati_configuration" element="NULL" name="x_dtitg_notificati_configuration" parent="NULL" relationship="NULL" sys_domain="global" view="ed64b340e412021008dda4ccc4008028">300ffa84f57e0e105dcf91c2a9019e27</list_id>
             <max_value>false</max_value>
             <min_value>false</min_value>
             <position>0</position>
@@ -40,7 +40,7 @@
             <sys_updated_by>admin_nsharma2</sys_updated_by>
             <sys_updated_on>2024-06-10 11:14:53</sys_updated_on>
             <sys_user/>
-            <view display_value="Reference List" name="sys_ref_list">dfa78370192202105dcfb6e0a9a4837a</view>
+            <view display_value="Reference List" name="sys_ref_list">ed64b340e412021008dda4ccc4008028</view>
             <view_name/>
         </sys_ui_list>
     </sys_ui_list>
